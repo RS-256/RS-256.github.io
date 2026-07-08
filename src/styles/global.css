@@ -1,11 +1,11 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* .dark クラスでダークモードを切り替える(OS設定+手動トグル対応) */
+/* Toggle dark mode with the .dark class (supports OS preference and manual toggle). */
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  /* ライトテーマ: パステルピンク基調 */
+  /* Light theme: pastel pink base */
   --c-base: #fdf9fb;
   --c-surface: #ffffff;
   --c-surface-hover: #fff5f9;
@@ -21,7 +21,7 @@
 }
 
 .dark {
-  /* ダークテーマ: 深いプラムにピンクのアクセント */
+  /* Dark theme: deep plum with pink accents */
   --c-base: #17111a;
   --c-surface: #211a26;
   --c-surface-hover: #2a2130;
@@ -59,7 +59,7 @@ html {
 
 body {
   background-color: var(--c-base);
-  /* ごく薄いドットグリッドで背景に質感を出す */
+  /* Add texture with a very subtle dot grid. */
   background-image: radial-gradient(var(--c-dot) 1px, transparent 1px);
   background-size: 26px 26px;
   color: var(--c-ink);
@@ -67,7 +67,7 @@ body {
   transition: background-color 200ms ease, color 200ms ease;
 }
 
-/* 作品ポップアップの開閉アニメーション */
+/* Open animation for work/resource dialogs */
 dialog[open] {
   animation: dialog-pop 180ms ease-out;
 }
@@ -86,7 +86,7 @@ dialog[open]::backdrop {
   }
 }
 
-/* notes 記事本文(Tailwind Typography)のテーマ調整 */
+/* Theme adjustments for note body content (Tailwind Typography) */
 .prose {
   --tw-prose-body: var(--c-ink);
   --tw-prose-headings: var(--c-ink);

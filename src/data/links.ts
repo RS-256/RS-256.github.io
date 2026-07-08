@@ -1,14 +1,14 @@
-/** SNS・外部プロフィールへのリンク */
+/** Social and external profile links */
 
 export interface SocialLink {
   platform: string;
   username: string;
   url: string;
-  /** astro-icon のアイコン名(simple-icons コレクション) */
+  /** astro-icon icon name from the simple-icons collection */
   icon: string;
-  /** ホバー時のブランドカラー(ライトテーマ) */
+  /** Brand color on hover in the light theme */
   color: string;
-  /** ホバー時のブランドカラー(ダークテーマ)。黒系ブランドは明るい色に差し替える */
+  /** Brand color on hover in the dark theme; use lighter colors for black brands */
   darkColor?: string;
 }
 

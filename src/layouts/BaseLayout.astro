@@ -40,7 +40,7 @@ const currentPath = Astro.url.pathname;
     <meta name="twitter:card" content="summary" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script is:inline>
-      // FOUC 防止: レンダリング前にテーマを確定させる
+      // Prevent FOUC by resolving the theme before rendering.
       (() => {
         const saved = localStorage.getItem("theme");
         const dark =
@@ -51,7 +51,7 @@ const currentPath = Astro.url.pathname;
     </script>
   </head>
   <body class="flex min-h-svh flex-col">
-    <!-- 全ページ共通の背景装飾(淡いパステルの光) -->
+    <!-- Shared page background decoration with soft pastel glow. -->
     <div class="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
       <div
         class="absolute -right-32 -top-32 size-96 rounded-full bg-glow-a opacity-40 blur-3xl"
@@ -136,7 +136,7 @@ const currentPath = Astro.url.pathname;
     </footer>
 
     <script>
-      // works / resources のポップアップ共通制御(イベント委譲)
+      // Shared dialog controls for works/resources, using event delegation.
       document.addEventListener("click", (e) => {
         const target = e.target as HTMLElement;
 
@@ -154,7 +154,7 @@ const currentPath = Astro.url.pathname;
           return;
         }
 
-        // バックドロップ(dialog 要素自身)のクリックで閉じる
+        // Close when clicking the backdrop, which is the dialog element itself.
         if (e.target instanceof HTMLDialogElement) e.target.close();
       });
     </script>

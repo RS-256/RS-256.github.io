@@ -7,7 +7,7 @@ interface Props {
 }
 const { resource } = Astro.props;
 
-// リンクが 1 件だけなら直接開き、複数ならポップアップで一覧を表示する
+// Open a single-link resource directly; show a dialog list for multiple links.
 const single = resource.links.length === 1 ? resource.links[0] : undefined;
 const dialogId = `resource-dialog-${resource.title
   .toLowerCase()

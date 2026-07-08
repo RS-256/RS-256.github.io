@@ -1,7 +1,7 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
-// src/content/notes/ に .md を置くと /notes に自動で追加される
+// Markdown files in src/content/notes/ are automatically added to /notes.
 const notes = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/notes" }),
   schema: z.object({

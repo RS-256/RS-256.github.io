@@ -1,23 +1,23 @@
 /**
- * /resources に表示するリンク集。
- * 1 カード = 1 エントリ(ResourceItem)。
- * links が 1 件だけのカードはクリックで直接そのリンクを開き、
- * 複数あるカードはポップアップでリンク一覧を表示する(招待リンク集などに便利)。
- * TODO: プレースホルダーを含むので、よく使うサイト・データに差し替え/追記する。
+ * Link collection shown on /resources.
+ * One card equals one ResourceItem entry.
+ * Cards with one link open that link directly.
+ * Cards with multiple links show a dialog list, which is useful for invite link collections.
+ * TODO: Replace or extend the placeholders with frequently used sites and data.
  */
 
 export interface ResourceLink {
   label: string;
   url: string;
-  /** ポップアップの一覧に表示する補足(任意) */
+  /** Optional note shown in the dialog list */
   description?: string;
 }
 
 export interface ResourceItem {
   title: string;
-  /** カードに表示する短い説明 */
+  /** Short description shown on the card */
   description: string;
-  /** ポップアップ用の詳しい説明(省略時は description を表示) */
+  /** Detailed description for the dialog; falls back to description when omitted */
   details?: string;
   links: ResourceLink[];
 }

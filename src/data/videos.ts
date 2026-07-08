@@ -1,7 +1,7 @@
 /**
- * トップページの Videos セクションに表示する動画。
- * YouTube の動画 ID とタイトルを書くだけでサムネイル付きカードになる。
- * 3 件程度がレイアウト的にきれい(1 行に収まる)。
+ * Videos shown in the home page Videos section.
+ * Add only the YouTube video ID and title to create a card with a thumbnail.
+ * Around 3 items fits the layout well in one row.
  */
 
 export const channel = {
@@ -10,7 +10,7 @@ export const channel = {
 };
 
 export interface Video {
-  /** YouTube の動画 ID(watch?v= の後ろの部分) */
+  /** YouTube video ID, the part after watch?v= */
   id: string;
   title: string;
 }

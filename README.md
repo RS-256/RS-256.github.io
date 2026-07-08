@@ -1,42 +1,42 @@
 # rs256 Portfolio
 
-rs256(やまゆー)のポートフォリオサイト。**Astro + TypeScript + Tailwind CSS** 製、GitHub Pages でホスティング。
+Portfolio site for rs256 (Yamayu). Built with **Astro + TypeScript + Tailwind CSS** and hosted on GitHub Pages.
 
-## 開発
+## Development
 
 ```sh
 npm install
-npm run dev      # 開発サーバー (http://localhost:4321)
-npm run build    # 本番ビルド (dist/)
-npm run preview  # ビルド結果のプレビュー
+npm run dev      # Development server (http://localhost:4321)
+npm run build    # Production build (dist/)
+npm run preview  # Preview the built site
 ```
 
-## コンテンツの更新方法
+## Updating Content
 
-| 更新したいもの | 編集するファイル |
+| What to update | File to edit |
 | --- | --- |
-| 作品(Featured / Works) | `src/data/works.ts` — 配列に 1 エントリ追記。`featured: true` でトップに表示(4件推奨) |
-| 動画(Videos) | `src/data/videos.ts` — YouTube の動画 ID とタイトルを追記(3件程度推奨) |
-| SNS リンク | `src/data/links.ts` |
-| リソース集 | `src/data/resources.ts` |
-| 記事(Notes) | `src/content/notes/*.md` を追加(frontmatter: `title` / `date` / `description`) |
-| 自己紹介文 | `src/pages/index.astro` のヒーローセクション |
+| Works (Featured / Works) | `src/data/works.ts` - Add one entry to the array. Set `featured: true` to show it on the home page (4 items recommended). |
+| Videos | `src/data/videos.ts` - Add the YouTube video ID and title (about 3 items recommended). |
+| Social links | `src/data/links.ts` |
+| Resources | `src/data/resources.ts` |
+| Notes | Add `src/content/notes/*.md` files (frontmatter: `title` / `date` / `description`). |
+| Profile text | Hero section in `src/pages/index.astro` |
 
-作品アイコン画像を使う場合は `src/assets/works/` に置き、`works.ts` で `import` して `icon` に渡す(省略時は頭文字タイルが表示される)。
+To use work icon images, place them in `src/assets/works/`, import them in `works.ts`, and pass them to `icon`. If omitted, an initial-letter tile is shown.
 
-## ⚠️ 公開前に確認・差し替えるもの
+## Pre-Publish Checklist
 
-- [ ] `src/data/works.ts` — `TODO` コメント付きの作品説明 3 件(CarpetSuppression / worldEdit-RegexSupport / minecraft-server-launcher)を確認
-- [ ] `src/data/resources.ts` — プレースホルダーのリンク
-- [ ] `src/pages/index.astro` — 自己紹介文の調整とアバター画像(現在は「や」のタイル)
-- [ ] `public/CNAME` — 実際のカスタムドメイン(現在 `example.com`)
-- [ ] `astro.config.mjs` の `site` — 実際のドメイン URL
-- [ ] `src/content/notes/markdown-sample.md` — 表示確認用サンプル記事(不要なら削除)
+- [ ] `src/data/works.ts` - Review the 3 work descriptions marked with `TODO` comments (CarpetSuppression / worldEdit-RegexSupport / minecraft-server-launcher).
+- [ ] `src/data/resources.ts` - Replace placeholder links.
+- [ ] `src/pages/index.astro` - Adjust the profile text and avatar image.
+- [ ] `public/CNAME` - Set the actual custom domain (currently `example.com`).
+- [ ] `astro.config.mjs` `site` - Set the actual domain URL.
+- [ ] `src/content/notes/markdown-sample.md` - Sample article for display checks; delete it if unnecessary.
 
-## デプロイ
+## Deployment
 
-`main` に push すると GitHub Actions(`.github/workflows/deploy.yml`)が自動でビルドして GitHub Pages に公開する。
+Pushing to `main` triggers GitHub Actions (`.github/workflows/deploy.yml`) to build and publish the site to GitHub Pages.
 
-初回のみリポジトリ設定が必要:
-1. GitHub リポジトリの **Settings → Pages → Source** を **GitHub Actions** に変更
-2. カスタムドメインの DNS(A レコード or CNAME)を GitHub Pages に向ける
+Initial repository setup:
+1. In the GitHub repository, set **Settings -> Pages -> Source** to **GitHub Actions**.
+2. Point the custom domain DNS (A records or CNAME) to GitHub Pages.

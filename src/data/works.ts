@@ -3,11 +3,11 @@ import infinoteIcon from "../assets/works/infinote.png";
 import histreeIcon from "../assets/works/histree.png";
 
 /**
- * 作品データの一元管理ファイル。
- * 作品を追加するときはこのファイルの works 配列に 1 エントリ追記するだけでよい。
- * featured: true の作品(4件推奨)がトップページに表示される。
- * icon を省略するとタイトル頭文字のグラデーションタイルが表示される。
- * 画像を使う場合は src/assets/works/ に置いて import し、icon に渡す。
+ * Centralized work data.
+ * To add a work, append one entry to the works array in this file.
+ * Works with featured: true are shown on the home page (4 items recommended).
+ * When icon is omitted, a gradient tile with the title initial is shown.
+ * To use an image, place it in src/assets/works/, import it, and pass it to icon.
  */
 
 export const categories = [
@@ -36,28 +36,28 @@ export const categories = [
 export type CategoryId = (typeof categories)[number]["id"];
 
 export interface WorkLinks {
-  /** ソースコード(GitHub など)→ View Source チップ */
+  /** Source code (GitHub, etc.) -> View Source chip */
   source?: string;
-  /** 配布ページ(Modrinth / ストアなど)→ Download チップ */
+  /** Distribution page (Modrinth, store, etc.) -> Download chip */
   download?: string;
-  /** そのまま利用できるサイト → Open Site チップ */
+  /** Live site that can be used directly -> Open Site chip */
   site?: string;
 }
 
 export interface Work {
   id: string;
   title: string;
-  /** カード用の短い説明(1〜2文) */
+  /** Short description for cards (1-2 sentences) */
   description: string;
-  /** ポップアップ用の詳しい説明(省略時は description を表示) */
+  /** Detailed description for the dialog; falls back to description when omitted */
   details?: string;
   links: WorkLinks;
   category: CategoryId;
-  /** トップページの Featured Works に表示する(4件推奨) */
+  /** Show in Featured Works on the home page (4 items recommended) */
   featured?: boolean;
-  /** 作品アイコン画像(省略時は頭文字タイル) */
+  /** Work icon image; falls back to an initial-letter tile when omitted */
   icon?: ImageMetadata;
-  /** ドット絵アイコンをぼかさず拡大表示する */
+  /** Scale pixel-art icons without blurring */
   pixelated?: boolean;
 }
 
@@ -132,7 +132,7 @@ export const works: Work[] = [
     category: "minecraft-mods",
   },
   {
-    // TODO: 説明を確認して書き直す(README が未整備だったため仮の説明)
+    // TODO: Review and rewrite this description; it is temporary because the README was incomplete.
     id: "carpet-suppression",
     title: "CarpetSuppression",
     description: "開発中の Fabric Mod。",
@@ -142,7 +142,7 @@ export const works: Work[] = [
     category: "minecraft-mods",
   },
   {
-    // TODO: 説明を確認して書き直す(README が未整備だったため仮の説明)
+    // TODO: Review and rewrite this description; it is temporary because the README was incomplete.
     id: "worldedit-regex-support",
     title: "worldEdit-RegexSupport",
     description: "WorldEdit に正規表現サポートを追加する開発中の Fabric Mod。",
@@ -163,7 +163,7 @@ export const works: Work[] = [
     category: "apps-extensions",
   },
   {
-    // TODO: 説明を確認して書き直す(README が未整備だったため仮の説明)
+    // TODO: Review and rewrite this description; it is temporary because the README was incomplete.
     id: "minecraft-server-launcher",
     title: "minecraft-server-launcher",
     description: "Minecraft サーバーの起動を補助するランチャー。",
@@ -187,7 +187,7 @@ export const works: Work[] = [
 
 export const featuredWorks = works.filter((w) => w.featured);
 
-/** /works 用: カテゴリ定義順に、そのカテゴリの作品をまとめて返す */
+/** For /works: returns works grouped by category definition order. */
 export function worksByCategory() {
   return categories
     .map((category) => ({

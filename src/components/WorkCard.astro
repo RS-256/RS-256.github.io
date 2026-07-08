@@ -5,7 +5,7 @@ import { categories, type Work } from "../data/works";
 
 interface Props {
   work: Work;
-  /** /works ページなどカテゴリ見出しの下では非表示にする */
+  /** Hide under category headings, such as on the /works page. */
   showCategory?: boolean;
 }
 const { work, showCategory = true } = Astro.props;
