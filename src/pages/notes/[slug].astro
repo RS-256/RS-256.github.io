@@ -1,0 +1,52 @@
+---
+import { getCollection, render } from "astro:content";
+import { Icon } from "astro-icon/components";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const notes = await getCollection("notes");
+  return notes.map((note) => ({
+    params: { slug: note.id },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+const date = note.data.date.toLocaleDateString("ja-JP", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<BaseLayout title={note.data.title} description={note.data.description}>
+  <article class="mx-auto max-w-3xl pt-14 sm:pt-20">
+    <a
+      href="/notes"
+      class="group inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-accent"
+    >
+      <Icon
+        name="lucide:chevron-left"
+        class="size-4 transition-transform group-hover:-translate-x-0.5"
+      />
+      Notes に戻る
+    </a>
+    <header class="mb-10 mt-6 border-b border-line pb-8">
+      <time
+        datetime={note.data.date.toISOString()}
+        class="text-sm text-muted"
+      >
+        {date}
+      </time>
+      <h1
+        class="mt-2 font-display text-3xl font-extrabold leading-snug tracking-tight sm:text-4xl"
+      >
+        {note.data.title}
+      </h1>
+    </header>
+    <div class="prose max-w-none">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

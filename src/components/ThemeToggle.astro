@@ -1,0 +1,20 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  aria-label="テーマ切り替え"
+  class="rounded-full p-2 text-muted transition-colors hover:bg-surface-hover hover:text-accent"
+>
+  <Icon name="lucide:sun" class="size-4.5 dark:hidden" />
+  <Icon name="lucide:moon" class="hidden size-4.5 dark:block" />
+</button>
+
+<script>
+  document.getElementById("theme-toggle")?.addEventListener("click", () => {
+    const dark = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  });
+</script>

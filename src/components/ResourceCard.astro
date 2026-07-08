@@ -1,0 +1,121 @@
+---
+import { Icon } from "astro-icon/components";
+import type { ResourceItem } from "../data/resources";
+
+interface Props {
+  resource: ResourceItem;
+}
+const { resource } = Astro.props;
+
+// リンクが 1 件だけなら直接開き、複数ならポップアップで一覧を表示する
+const single = resource.links.length === 1 ? resource.links[0] : undefined;
+const dialogId = `resource-dialog-${resource.title
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, "-")}`;
+
+const cardClass =
+  "group flex w-full flex-col rounded-2xl border border-line bg-surface p-5 text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10";
+const titleClass =
+  "truncate font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent group-hover:decoration-accent/50";
+---
+
+{
+  single ? (
+    <a
+      href={single.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class={cardClass}
+    >
+      <div class="flex items-center gap-1.5">
+        <h3 class={titleClass}>{resource.title}</h3>
+        <Icon
+          name="lucide:arrow-up-right"
+          class="size-3.5 shrink-0 text-muted opacity-0 transition-opacity group-hover:opacity-100"
+        />
+      </div>
+      <p class="mt-1 flex-1 text-sm leading-relaxed text-muted">
+        {resource.description}
+      </p>
+      <p class="mt-2.5 truncate text-xs text-muted/70">
+        {new URL(single.url).hostname}
+      </p>
+    </a>
+  ) : (
+    <button type="button" data-dialog-target={dialogId} class:list={[cardClass, "cursor-pointer"]}>
+      <div class="flex items-center gap-1.5">
+        <h3 class={titleClass}>{resource.title}</h3>
+        <Icon
+          name="lucide:maximize-2"
+          class="size-3.5 shrink-0 text-muted opacity-0 transition-opacity group-hover:opacity-100"
+        />
+      </div>
+      <p class="mt-1 flex-1 text-sm leading-relaxed text-muted">
+        {resource.description}
+      </p>
+      <span class="mt-2.5 inline-flex items-center gap-1.5 self-start rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-medium text-accent-strong">
+        <Icon name="lucide:link" class="size-3" />
+        {resource.links.length} links
+      </span>
+    </button>
+  )
+}
+
+{
+  !single && (
+    <dialog
+      id={dialogId}
+      class="m-auto w-[calc(100%-2rem)] max-w-lg rounded-3xl border border-line bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/50 backdrop:backdrop-blur-sm"
+    >
+      <div class="p-6 sm:p-8">
+        <div class="flex items-start gap-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="font-display text-xl font-bold">{resource.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
+              {resource.details ?? resource.description}
+            </p>
+          </div>
+          <button
+            type="button"
+            data-dialog-close
+            aria-label="閉じる"
+            class="-m-2 shrink-0 cursor-pointer rounded-full p-2 text-muted transition-colors hover:bg-surface-hover hover:text-ink"
+          >
+            <Icon name="lucide:x" class="size-5" />
+          </button>
+        </div>
+
+        <ul class="mt-5 flex flex-col gap-2.5">
+          {resource.links.map((link) => (
+            <li>
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group/link flex items-center justify-between gap-3 rounded-xl border border-line p-3.5 transition-all duration-200 hover:border-accent/40 hover:bg-surface-hover"
+              >
+                <span class="min-w-0">
+                  <span class="block truncate text-sm font-bold text-ink transition-colors group-hover/link:text-accent">
+                    {link.label}
+                  </span>
+                  {link.description && (
+                    <span class="mt-0.5 block truncate text-xs text-muted">
+                      {link.description}
+                    </span>
+                  )}
+                  <span class="mt-0.5 block truncate text-xs text-muted/70">
+                    {new URL(link.url).hostname}
+                  </span>
+                </span>
+                <Icon
+                  name="lucide:arrow-up-right"
+                  class="size-4 shrink-0 text-muted transition-colors group-hover/link:text-accent"
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </dialog>
+  )
+}

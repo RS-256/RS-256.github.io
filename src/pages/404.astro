@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="404 Not Found">
+  <div class="flex flex-col items-center py-32 text-center">
+    <p class="font-display text-6xl font-extrabold text-accent">404</p>
+    <h1 class="mt-4 font-display text-xl font-bold">
+      ページが見つかりませんでした
+    </h1>
+    <a
+      href="/"
+      class="mt-8 rounded-full bg-accent-soft px-5 py-2.5 text-sm font-bold text-accent-strong transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:shadow-accent/15"
+    >
+      トップに戻る
+    </a>
+  </div>
+</BaseLayout>

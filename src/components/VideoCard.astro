@@ -1,0 +1,39 @@
+---
+import { Icon } from "astro-icon/components";
+import { thumbnailUrl, videoUrl, type Video } from "../data/videos";
+
+interface Props {
+  video: Video;
+}
+const { video } = Astro.props;
+---
+
+<a
+  href={videoUrl(video)}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10"
+>
+  <div class="relative aspect-video overflow-hidden">
+    <img
+      src={thumbnailUrl(video)}
+      alt=""
+      loading="lazy"
+      class="size-full object-cover transition-transform duration-300 group-hover:scale-105"
+    />
+    <div
+      class="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/20"
+    >
+      <span
+        class="flex size-12 items-center justify-center rounded-full bg-base/80 text-accent opacity-0 shadow-lg backdrop-blur-sm transition-all duration-200 group-hover:opacity-100"
+      >
+        <Icon name="lucide:play" class="ml-0.5 size-5" />
+      </span>
+    </div>
+  </div>
+  <h3
+    class="line-clamp-2 p-4 text-sm font-bold leading-relaxed text-ink transition-colors group-hover:text-accent"
+  >
+    {video.title}
+  </h3>
+</a>

@@ -1,0 +1,156 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { categories, type Work } from "../data/works";
+
+interface Props {
+  work: Work;
+  /** /works ページなどカテゴリ見出しの下では非表示にする */
+  showCategory?: boolean;
+}
+const { work, showCategory = true } = Astro.props;
+const categoryLabel = categories.find((c) => c.id === work.category)?.label;
+const dialogId = `work-dialog-${work.id}`;
+
+const chips = [
+  work.links.site && {
+    href: work.links.site,
+    icon: "lucide:external-link",
+    label: "Open Site",
+    primary: true,
+  },
+  work.links.download && {
+    href: work.links.download,
+    icon: "lucide:download",
+    label: "Download",
+    primary: true,
+  },
+  work.links.source && {
+    href: work.links.source,
+    icon: "simple-icons:github",
+    label: "View Source",
+    primary: false,
+  },
+].filter((c) => !!c);
+---
+
+<button
+  type="button"
+  data-dialog-target={dialogId}
+  class="group flex w-full cursor-pointer gap-4 rounded-2xl border border-line bg-surface p-5 text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10"
+>
+  <div class="shrink-0">
+    {
+      work.icon ? (
+        <Image
+          src={work.icon}
+          alt=""
+          width={Math.min(work.icon.width, 112)}
+          height={Math.min(work.icon.height, 112)}
+          class:list={[
+            "size-14 rounded-xl object-cover",
+            work.pixelated && "[image-rendering:pixelated]",
+          ]}
+        />
+      ) : (
+        <div class="flex size-14 items-center justify-center rounded-xl bg-gradient-to-br from-glow-a to-glow-b font-display text-xl font-bold text-accent-strong">
+          {work.title.charAt(0)}
+        </div>
+      )
+    }
+  </div>
+  <div class="min-w-0">
+    <div class="flex items-center gap-1.5">
+      <h3
+        class="truncate font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent group-hover:decoration-accent/50"
+      >
+        {work.title}
+      </h3>
+      <Icon
+        name="lucide:maximize-2"
+        class="size-3.5 shrink-0 text-muted opacity-0 transition-opacity group-hover:opacity-100"
+      />
+    </div>
+    <p class="mt-1 line-clamp-2 text-sm leading-relaxed text-muted">
+      {work.description}
+    </p>
+    {
+      showCategory && categoryLabel && (
+        <span class="mt-2.5 inline-block rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-medium text-accent-strong">
+          {categoryLabel}
+        </span>
+      )
+    }
+  </div>
+</button>
+
+<dialog
+  id={dialogId}
+  class="m-auto w-[calc(100%-2rem)] max-w-lg rounded-3xl border border-line bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/50 backdrop:backdrop-blur-sm"
+>
+  <div class="p-6 sm:p-8">
+    <div class="flex items-start gap-4">
+      {
+        work.icon ? (
+          <Image
+            src={work.icon}
+            alt=""
+            width={Math.min(work.icon.width, 128)}
+            height={Math.min(work.icon.height, 128)}
+            class:list={[
+              "size-16 rounded-2xl object-cover",
+              work.pixelated && "[image-rendering:pixelated]",
+            ]}
+          />
+        ) : (
+          <div class="flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-glow-a to-glow-b font-display text-2xl font-bold text-accent-strong">
+            {work.title.charAt(0)}
+          </div>
+        )
+      }
+      <div class="min-w-0 flex-1">
+        <h3 class="font-display text-xl font-bold">{work.title}</h3>
+        {
+          categoryLabel && (
+            <span class="mt-1.5 inline-block rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-medium text-accent-strong">
+              {categoryLabel}
+            </span>
+          )
+        }
+      </div>
+      <button
+        type="button"
+        data-dialog-close
+        aria-label="閉じる"
+        class="-m-2 shrink-0 cursor-pointer rounded-full p-2 text-muted transition-colors hover:bg-surface-hover hover:text-ink"
+      >
+        <Icon name="lucide:x" class="size-5" />
+      </button>
+    </div>
+
+    <p class="mt-5 text-sm leading-relaxed text-muted">
+      {work.details ?? work.description}
+    </p>
+
+    <div class="mt-6 flex flex-wrap gap-2.5">
+      {
+        chips.map((chip) => (
+          <a
+            href={chip.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class:list={[
+              "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:shadow-accent/15",
+              chip.primary
+                ? "bg-accent-soft text-accent-strong"
+                : "border border-line text-ink hover:border-accent/40 hover:text-accent",
+            ]}
+          >
+            <Icon name={chip.icon} class="size-4" />
+            {chip.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</dialog>

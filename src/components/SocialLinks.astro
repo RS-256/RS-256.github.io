@@ -1,0 +1,29 @@
+---
+import { Icon } from "astro-icon/components";
+import { socialLinks } from "../data/links";
+---
+
+<ul class="flex flex-wrap justify-center gap-3 sm:justify-start">
+  {
+    socialLinks.map((link) => (
+      <li>
+        <a
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={`--brand: ${link.color}; --brand-dark: ${link.darkColor ?? link.color};`}
+          class="group flex items-center gap-2.5 rounded-full border border-line bg-surface py-2 pl-3 pr-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-md hover:shadow-accent/10"
+        >
+          <Icon
+            name={link.icon}
+            class="size-4.5 text-muted transition-colors group-hover:text-(--brand) dark:group-hover:text-(--brand-dark)"
+          />
+          <span class="text-sm">
+            <span class="font-medium">{link.platform}</span>
+            <span class="ml-1.5 text-muted">{link.username}</span>
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

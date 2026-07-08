@@ -1,0 +1,104 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* .dark クラスでダークモードを切り替える(OS設定+手動トグル対応) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* ライトテーマ: パステルピンク基調 */
+  --c-base: #fdf9fb;
+  --c-surface: #ffffff;
+  --c-surface-hover: #fff5f9;
+  --c-ink: #2e2329;
+  --c-muted: #74636e;
+  --c-line: #f1dde8;
+  --c-dot: rgba(214, 72, 143, 0.08);
+  --c-accent: #d6488f;
+  --c-accent-strong: #c02e78;
+  --c-accent-soft: #fce0ed;
+  --c-glow-a: #ffd6e8;
+  --c-glow-b: #e3d9ff;
+}
+
+.dark {
+  /* ダークテーマ: 深いプラムにピンクのアクセント */
+  --c-base: #17111a;
+  --c-surface: #211a26;
+  --c-surface-hover: #2a2130;
+  --c-ink: #f5edf3;
+  --c-muted: #b2a1ae;
+  --c-line: #382c3c;
+  --c-dot: rgba(244, 144, 191, 0.07);
+  --c-accent: #f490bf;
+  --c-accent-strong: #f7abd0;
+  --c-accent-soft: #3c2537;
+  --c-glow-a: #4a2a44;
+  --c-glow-b: #33294f;
+}
+
+@theme inline {
+  --color-base: var(--c-base);
+  --color-surface: var(--c-surface);
+  --color-surface-hover: var(--c-surface-hover);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-line: var(--c-line);
+  --color-accent: var(--c-accent);
+  --color-accent-strong: var(--c-accent-strong);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-glow-a: var(--c-glow-a);
+  --color-glow-b: var(--c-glow-b);
+
+  --font-sans: "M PLUS 2 Variable", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+  --font-display: "M PLUS Rounded 1c", "M PLUS 2 Variable", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--c-base);
+  /* ごく薄いドットグリッドで背景に質感を出す */
+  background-image: radial-gradient(var(--c-dot) 1px, transparent 1px);
+  background-size: 26px 26px;
+  color: var(--c-ink);
+  font-family: var(--font-sans);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* 作品ポップアップの開閉アニメーション */
+dialog[open] {
+  animation: dialog-pop 180ms ease-out;
+}
+dialog[open]::backdrop {
+  animation: backdrop-fade 180ms ease-out;
+}
+@keyframes dialog-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+}
+@keyframes backdrop-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* notes 記事本文(Tailwind Typography)のテーマ調整 */
+.prose {
+  --tw-prose-body: var(--c-ink);
+  --tw-prose-headings: var(--c-ink);
+  --tw-prose-links: var(--c-accent);
+  --tw-prose-bold: var(--c-ink);
+  --tw-prose-quotes: var(--c-muted);
+  --tw-prose-quote-borders: var(--c-accent-soft);
+  --tw-prose-code: var(--c-accent-strong);
+  --tw-prose-hr: var(--c-line);
+  --tw-prose-th-borders: var(--c-line);
+  --tw-prose-td-borders: var(--c-line);
+  --tw-prose-bullets: var(--c-accent);
+  --tw-prose-counters: var(--c-accent);
+  --tw-prose-captions: var(--c-muted);
+}

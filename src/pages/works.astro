@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import WorkCard from "../components/WorkCard.astro";
+import { worksByCategory } from "../data/works";
+
+const groups = worksByCategory();
+---
+
+<BaseLayout title="Works" description="rs256(やまゆー)の全作品一覧。Minecraft Mod、Web ツール、調査・検証など。">
+  <header class="pb-10 pt-14 sm:pt-20">
+    <h1 class="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+      Works<span class="text-accent">.</span>
+    </h1>
+    <p class="mt-3 text-muted">
+      これまでに作ったもの一覧。カードをクリックすると配布・利用ページに移動します。
+    </p>
+  </header>
+
+  <div class="flex flex-col gap-12 pb-4">
+    {
+      groups.map(({ category, items }) => (
+        <section>
+          <div class="mb-5 flex items-baseline gap-3">
+            <h2 class="font-display text-xl font-bold sm:text-2xl">
+              {category.label}
+            </h2>
+            <span class="text-sm text-muted">{items.length} 件</span>
+          </div>
+          <p class="mb-5 -mt-3 text-sm text-muted">{category.description}</p>
+          <div class="grid gap-4 sm:grid-cols-2">
+            {items.map((work) => (
+              <WorkCard work={work} showCategory={false} />
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>

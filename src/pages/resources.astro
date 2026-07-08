@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ResourceCard from "../components/ResourceCard.astro";
+import { resourceGroups } from "../data/resources";
+---
+
+<BaseLayout title="Resources" description="よく使うサイトや有用なデータへのリンク集。">
+  <header class="pb-10 pt-14 sm:pt-20">
+    <h1 class="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+      Resources<span class="text-accent">.</span>
+    </h1>
+    <p class="mt-3 text-muted">
+      よく使うサイト・有用なデータへのリンク集です。
+    </p>
+  </header>
+
+  <div class="flex flex-col gap-12 pb-4">
+    {
+      resourceGroups.map((group) => (
+        <section>
+          <h2 class="mb-5 font-display text-xl font-bold sm:text-2xl">
+            {group.label}
+          </h2>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {group.items.map((resource) => (
+              <ResourceCard resource={resource} />
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>

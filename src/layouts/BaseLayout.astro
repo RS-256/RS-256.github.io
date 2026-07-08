@@ -1,0 +1,162 @@
+---
+import "../styles/global.css";
+import "@fontsource-variable/m-plus-2";
+import "@fontsource/m-plus-rounded-1c/700.css";
+import "@fontsource/m-plus-rounded-1c/800.css";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import { socialLinks } from "../data/links";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const SITE_NAME = "rs256 | やまゆー";
+const { title, description = "rs256(やまゆー)のポートフォリオサイト。制作した Minecraft Mod や Web ツールなどを紹介しています。" } = Astro.props;
+const pageTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
+
+const navItems = [
+  { href: "/works", label: "Works" },
+  { href: "/notes", label: "Notes" },
+  { href: "/resources", label: "Resources" },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {Astro.site && (
+      <meta property="og:image" content={new URL("ogp.jpg", Astro.site)} />
+    )}
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      // FOUC 防止: レンダリング前にテーマを確定させる
+      (() => {
+        const saved = localStorage.getItem("theme");
+        const dark =
+          saved === "dark" ||
+          (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.classList.toggle("dark", dark);
+      })();
+    </script>
+  </head>
+  <body class="flex min-h-svh flex-col">
+    <!-- 全ページ共通の背景装飾(淡いパステルの光) -->
+    <div class="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
+      <div
+        class="absolute -right-32 -top-32 size-96 rounded-full bg-glow-a opacity-40 blur-3xl"
+      >
+      </div>
+      <div
+        class="absolute -left-40 top-1/3 size-[28rem] rounded-full bg-glow-b opacity-30 blur-3xl"
+      >
+      </div>
+      <div
+        class="absolute -bottom-40 right-1/4 size-96 rounded-full bg-glow-a opacity-25 blur-3xl"
+      >
+      </div>
+    </div>
+    <header
+      class="sticky top-0 z-50 border-b border-line bg-base/80 backdrop-blur-md"
+    >
+      <div
+        class="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4 sm:px-6"
+      >
+        <a
+          href="/"
+          class="font-display text-lg font-extrabold tracking-tight transition-colors hover:text-accent"
+        >
+          rs256<span class="text-accent">.</span>
+        </a>
+        <div class="flex items-center gap-1 sm:gap-2">
+          <nav class="flex items-center gap-1" aria-label="メインナビゲーション">
+            {
+              navItems.map((item) => {
+                const active =
+                  currentPath === item.href ||
+                  currentPath.startsWith(item.href + "/");
+                return (
+                  <a
+                    href={item.href}
+                    aria-current={active ? "page" : undefined}
+                    class:list={[
+                      "rounded-full px-3 py-1.5 text-sm font-medium transition-colors",
+                      active
+                        ? "bg-accent-soft text-accent-strong"
+                        : "text-muted hover:bg-surface-hover hover:text-ink",
+                    ]}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })
+            }
+          </nav>
+          <ThemeToggle />
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto w-full max-w-5xl flex-1 px-4 sm:px-6">
+      <slot />
+    </main>
+
+    <footer class="mt-20 border-t border-line">
+      <div
+        class="mx-auto flex w-full max-w-5xl flex-col items-center gap-4 px-4 py-8 sm:flex-row sm:justify-between sm:px-6"
+      >
+        <p class="text-sm text-muted">© 2026 rs256 / やまゆー</p>
+        <div class="flex items-center gap-1">
+          {
+            socialLinks.map((link) => (
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.platform}
+                style={`--brand: ${link.color}; --brand-dark: ${link.darkColor ?? link.color};`}
+                class="rounded-full p-2 text-muted transition-colors hover:bg-surface-hover hover:text-(--brand) dark:hover:text-(--brand-dark)"
+              >
+                <Icon name={link.icon} class="size-4" />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // works / resources のポップアップ共通制御(イベント委譲)
+      document.addEventListener("click", (e) => {
+        const target = e.target as HTMLElement;
+
+        const opener = target.closest<HTMLElement>("[data-dialog-target]");
+        if (opener) {
+          const dialog = document.getElementById(
+            opener.dataset.dialogTarget ?? "",
+          );
+          if (dialog instanceof HTMLDialogElement) dialog.showModal();
+          return;
+        }
+
+        if (target.closest("[data-dialog-close]")) {
+          target.closest("dialog")?.close();
+          return;
+        }
+
+        // バックドロップ(dialog 要素自身)のクリックで閉じる
+        if (e.target instanceof HTMLDialogElement) e.target.close();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,160 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import avatar from "../assets/avatar.jpg";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import WorkCard from "../components/WorkCard.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import VideoCard from "../components/VideoCard.astro";
+import { featuredWorks } from "../data/works";
+import { channel, featuredVideos } from "../data/videos";
+
+const subPages = [
+  {
+    href: "/notes",
+    icon: "lucide:notebook-pen",
+    title: "Notes",
+    description: "開発メモや技術記事など、書きものを置いています。",
+  },
+  {
+    href: "/resources",
+    icon: "lucide:library",
+    title: "Resources",
+    description: "よく使うサイトや有用なデータへのリンク集。",
+  },
+];
+---
+
+<BaseLayout>
+  <!-- Hero -->
+  <section class="relative pb-16 pt-16 sm:pb-20 sm:pt-24">
+    <div
+      class="pointer-events-none absolute -top-24 left-1/2 -z-10 h-80 w-[36rem] max-w-full -translate-x-1/2 rounded-full bg-gradient-to-r from-glow-a to-glow-b opacity-60 blur-3xl"
+      aria-hidden="true"
+    >
+    </div>
+    <!-- ノートブロック制作者らしい音符の装飾 -->
+    <div
+      class="pointer-events-none absolute inset-0 select-none font-display"
+      aria-hidden="true"
+    >
+      <span class="absolute right-[8%] top-8 rotate-12 text-3xl text-accent/25"
+        >♪</span
+      >
+      <span
+        class="absolute bottom-10 right-[22%] -rotate-6 text-xl text-accent/15"
+        >♫</span
+      >
+      <span class="absolute left-[4%] top-16 -rotate-12 text-2xl text-accent/15"
+        >♩</span
+      >
+    </div>
+    <div class="flex flex-col items-center gap-8 sm:flex-row sm:gap-12">
+      <div
+        class="shrink-0 rounded-full bg-gradient-to-br from-glow-a to-glow-b p-1 shadow-lg shadow-accent/10"
+      >
+        <Image
+          src={avatar}
+          alt="やまゆーのアイコン"
+          width={320}
+          height={320}
+          class="size-32 rounded-full object-cover sm:size-40"
+        />
+      </div>
+      <div class="text-center sm:text-left">
+        <p class="font-display text-sm font-bold tracking-widest text-accent">
+          RS256
+        </p>
+        <h1
+          class="mt-2 font-display text-4xl font-extrabold tracking-tight sm:text-5xl"
+        >
+          やまゆー
+        </h1>
+        <!-- TODO: 自己紹介文はお好みで調整 -->
+        <p class="mt-4 max-w-xl leading-relaxed text-muted">
+          Minecraft
+          のノートブロック演奏動画を作ったり、それを支える Mod や Web
+          ツールを開発したりしています。
+        </p>
+        <div class="mt-6">
+          <SocialLinks />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Works -->
+  <section class="pb-16 sm:pb-20">
+    <SectionHeading
+      title="Featured Works"
+      subtitle="代表的な作品をピックアップ"
+    />
+    <div class="grid gap-4 sm:grid-cols-2">
+      {featuredWorks.map((work) => <WorkCard work={work} />)}
+    </div>
+    <div class="mt-6 text-center">
+      <a
+        href="/works"
+        class="group inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-5 py-2.5 text-sm font-bold text-accent-strong transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:shadow-accent/15"
+      >
+        and more...
+        <Icon
+          name="lucide:arrow-right"
+          class="size-4 transition-transform group-hover:translate-x-0.5"
+        />
+      </a>
+    </div>
+  </section>
+
+  <!-- Videos -->
+  <section class="pb-16 sm:pb-20">
+    <SectionHeading title="Videos" subtitle={channel.name} />
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {featuredVideos.map((video) => <VideoCard video={video} />)}
+    </div>
+    <div class="mt-6 text-center">
+      <a
+        href={channel.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-2.5 text-sm font-bold text-ink shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:text-accent hover:shadow-md hover:shadow-accent/10"
+      >
+        <Icon name="simple-icons:youtube" class="size-4 text-accent" />
+        チャンネルを見る
+        <Icon
+          name="lucide:arrow-up-right"
+          class="size-4 transition-transform group-hover:translate-x-0.5"
+        />
+      </a>
+    </div>
+  </section>
+
+  <!-- Notes / Resources への導線 -->
+  <section>
+    <div class="grid gap-4 sm:grid-cols-2">
+      {
+        subPages.map((page) => (
+          <a
+            href={page.href}
+            class="group flex items-start gap-4 rounded-2xl border border-line bg-surface p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10"
+          >
+            <div class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent-strong">
+              <Icon name={page.icon} class="size-5" />
+            </div>
+            <div>
+              <h3 class="flex items-center gap-1.5 font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent group-hover:decoration-accent/50">
+                {page.title}
+                <Icon
+                  name="lucide:chevron-right"
+                  class="size-4 text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-accent"
+                />
+              </h3>
+              <p class="mt-1 text-sm text-muted">{page.description}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
