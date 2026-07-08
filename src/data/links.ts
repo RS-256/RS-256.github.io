@@ -39,8 +39,8 @@ export const socialLinks: SocialLink[] = [
   },
   {
     platform: "Discord",
-    username: "discord.gg/yGJh3SjyV",
-    url: "https://discord.gg/yGJh3SjyV",
+    username: "配線力向上委員会",
+    url: "https://discord.gg/SjcMgG4GZS",
     icon: "simple-icons:discord",
     color: "#5865f2",
     darkColor: "#7289da",

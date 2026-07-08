@@ -85,7 +85,7 @@ export const resourceGroups: ResourceGroup[] = [
         links: [
           {
             label: "やまゆーの Discord サーバー",
-            url: "https://discord.gg/yGJh3SjyV",
+            url: "https://discord.gg/SjcMgG4GZS",
             description: "自分のコミュニティサーバー",
           },
           {
