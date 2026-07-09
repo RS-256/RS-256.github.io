@@ -9,6 +9,7 @@ import SocialLinks from "../components/SocialLinks.astro";
 import VideoCard from "../components/VideoCard.astro";
 import { featuredWorks } from "../data/works";
 import { channel, featuredVideos } from "../data/videos";
+import { aboutParagraphs, skillGroups } from "../data/about";
 
 const subPages = [
   {
@@ -80,6 +81,51 @@ const subPages = [
         <div class="mt-6">
           <SocialLinks />
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="pb-16 sm:pb-20">
+    <SectionHeading title="About" subtitle="なにをしているか" />
+    <div class="grid gap-8 lg:grid-cols-5">
+      <div class="flex flex-col gap-4 lg:col-span-2">
+        {
+          aboutParagraphs.map((paragraph) => (
+            <p class="leading-relaxed text-muted">{paragraph}</p>
+          ))
+        }
+      </div>
+      <div class="flex flex-col gap-6 lg:col-span-3">
+        {
+          skillGroups.map((group) => (
+            <div>
+              <h3 class="mb-3 text-sm font-bold text-ink">{group.label}</h3>
+              <ul class="flex flex-wrap gap-2">
+                {group.skills.map((skill) => (
+                  <li
+                    style={
+                      skill.color &&
+                      `--skill: ${skill.color}; --skill-dark: ${skill.darkColor ?? skill.color};`
+                    }
+                    class="flex items-center gap-2 rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm shadow-sm"
+                  >
+                    <Icon
+                      name={skill.icon}
+                      class:list={[
+                        "size-4",
+                        skill.color
+                          ? "text-(--skill) dark:text-(--skill-dark)"
+                          : "text-accent",
+                      ]}
+                    />
+                    {skill.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>

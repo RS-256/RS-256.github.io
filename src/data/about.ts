@@ -1,0 +1,51 @@
+/**
+ * トップページの About セクションの内容。
+ * TODO: 文章・スキルともに下書きなので、実態に合わせて自由に編集する。
+ * アイコンは simple-icons(ブランド)か lucide(汎用)から選べる。
+ * color はチップ内アイコンの色。黒系ブランドは darkColor で明るい色を指定する。
+ */
+
+/** 「なにをしているか」の段落(1 要素 = 1 段落) */
+export const aboutParagraphs = [
+  "Minecraft のノートブロック演奏を軸に、演奏動画の制作と、それを支える Mod・ツールの開発をしています。",
+  "演奏に必要な道具を自分で作るうちに開発そのものが好きになり、ノートブロック拡張 Mod の Infinote、専用 DAW の DNW、アニメーションレンダラーの mc animator など、「作るための道具」を作り続けています。",
+];
+
+export interface Skill {
+  name: string;
+  icon: string;
+  /** アイコンの色(省略時はテーマのミュート色) */
+  color?: string;
+  /** ダークテーマでの色(黒系ブランド用) */
+  darkColor?: string;
+}
+
+export interface SkillGroup {
+  label: string;
+  skills: Skill[];
+}
+
+export const skillGroups: SkillGroup[] = [
+  {
+    label: "よく使う言語",
+    skills: [
+      { name: "Java", icon: "simple-icons:openjdk", color: "#437291", darkColor: "#7ba7c7" },
+      { name: "TypeScript", icon: "simple-icons:typescript", color: "#3178c6", darkColor: "#5c9fe8" },
+      { name: "JavaScript", icon: "simple-icons:javascript", color: "#d4b830", darkColor: "#f7df1e" },
+      { name: "Python", icon: "simple-icons:python", color: "#3776ab", darkColor: "#6aa8d8" },
+      { name: "Scarpet", icon: "lucide:scroll-text" },
+    ],
+  },
+  {
+    label: "使ったことのあるフレームワーク・ツール",
+    skills: [
+      { name: "Fabric", icon: "lucide:blocks" },
+      { name: "Vue", icon: "simple-icons:vuedotjs", color: "#4fc08d" },
+      { name: "Three.js", icon: "simple-icons:threedotjs", color: "#000000", darkColor: "#ffffff" },
+      { name: "Vite", icon: "simple-icons:vite", color: "#646cff", darkColor: "#8a90ff" },
+      { name: "Astro", icon: "simple-icons:astro", color: "#bc52ee" },
+      { name: "Tailwind CSS", icon: "simple-icons:tailwindcss", color: "#06b6d4" },
+      { name: "FFmpeg", icon: "simple-icons:ffmpeg", color: "#007808", darkColor: "#4caf50" },
+    ],
+  },
+];

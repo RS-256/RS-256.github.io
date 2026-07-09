@@ -17,6 +17,7 @@ npm run preview  # Preview the built site
 | --- | --- |
 | Works (Featured / Works) | `src/data/works.ts` - Add one entry to the array. Set `featured: true` to show it on the home page (4 items recommended). |
 | Videos | `src/data/videos.ts` - Add the YouTube video ID and title (about 3 items recommended). |
+| About (intro / skills) | `src/data/about.ts` - Paragraphs and language/framework chips. |
 | Social links | `src/data/links.ts` |
 | Resources | `src/data/resources.ts` |
 | Notes | Add `src/content/notes/*.md` files (frontmatter: `title` / `date` / `description`). |
