@@ -1,8 +1,8 @@
 /**
- * Discord 招待リンクの公開情報をビルド時に取得する。
- * 認証不要の公開 API を使い、サーバー名・アイコン・メンバー数を返す。
- * 取得に失敗した場合は null を返し、呼び出し側は手書きのラベルへフォールバックする
- * (ネットワークや招待リンクの失効でビルドが落ちないようにするため)。
+ * Fetch public Discord invite information at build time.
+ * Uses the unauthenticated public API and returns the server name, icon, and member counts.
+ * Returns null on failure so callers can fall back to manually written labels
+ * without breaking the build when the network is unavailable or an invite has expired.
  */
 
 const INVITE_PATTERN = /(?:discord\.gg|discord(?:app)?\.com\/invite)\/([\w-]+)/i;
@@ -14,10 +14,10 @@ export interface DiscordInviteInfo {
   onlineCount?: number;
 }
 
-// 同じ招待コードを複数回フェッチしないためのキャッシュ(ビルドプロセス内で有効)
+// Cache invite lookups within the build process to avoid fetching the same code repeatedly.
 const cache = new Map<string, Promise<DiscordInviteInfo | null>>();
 
-/** URL が Discord 招待リンクなら公開情報を取得する。それ以外は null。 */
+/** Fetch public info when the URL is a Discord invite; otherwise return null. */
 export function fetchDiscordInvite(
   url: string,
 ): Promise<DiscordInviteInfo | null> {

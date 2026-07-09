@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import WorkCard from "../components/WorkCard.astro";
-import { worksByCategory } from "../data/works";
+import { getWorksByCategory } from "../data/works";
 
-const groups = worksByCategory();
+const groups = await getWorksByCategory();
 ---
 
 <BaseLayout title="Works" description="rs256(やまゆー)の全作品一覧。Minecraft Mod、Web ツール、調査・検証など。">

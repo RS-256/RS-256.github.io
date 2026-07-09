@@ -1,11 +1,11 @@
 /**
- * トップページの About セクションの内容。
- * TODO: 文章・スキルともに下書きなので、実態に合わせて自由に編集する。
- * アイコンは simple-icons(ブランド)か lucide(汎用)から選べる。
- * color はチップ内アイコンの色。黒系ブランドは darkColor で明るい色を指定する。
+ * Content for the home page About section.
+ * TODO: The copy and skills are drafts; edit them freely to match the actual profile.
+ * Icons can be selected from simple-icons for brands or lucide for general icons.
+ * color sets the chip icon color. For black brands, specify a lighter darkColor.
  */
 
-/** 「なにをしているか」の段落(1 要素 = 1 段落) */
+/** Paragraphs describing what this person does; one item equals one paragraph. */
 export const aboutParagraphs = [
   "Minecraft のノートブロック演奏を軸に、演奏動画の制作と、それを支える Mod・ツールの開発をしています。",
   "演奏に必要な道具を自分で作るうちに開発そのものが好きになり、ノートブロック拡張 Mod の Infinote、専用 DAW の DNW、アニメーションレンダラーの mc animator など、「作るための道具」を作り続けています。",
@@ -14,9 +14,9 @@ export const aboutParagraphs = [
 export interface Skill {
   name: string;
   icon: string;
-  /** アイコンの色(省略時はテーマのミュート色) */
+  /** Icon color; falls back to the theme muted color when omitted. */
   color?: string;
-  /** ダークテーマでの色(黒系ブランド用) */
+  /** Dark-theme color, useful for black brands. */
   darkColor?: string;
 }
 

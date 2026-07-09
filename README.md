@@ -15,20 +15,20 @@ npm run preview  # Preview the built site
 
 | What to update | File to edit |
 | --- | --- |
-| Works (Featured / Works) | `src/data/works.ts` - Add one entry to the array. Set `featured: true` to show it on the home page (4 items recommended). |
+| Works (Featured / Works) | `src/content/works.yaml` - Add one entry. Set `featured: true` to show it on the home page (4 items recommended). Categories are defined in `src/data/categories.ts`. |
 | Videos | `src/data/videos.ts` - Add the YouTube video ID and title (about 3 items recommended). |
 | About (intro / skills) | `src/data/about.ts` - Paragraphs and language/framework chips. |
 | Social links | `src/data/links.ts` |
-| Resources | `src/data/resources.ts` |
+| Resources | `src/content/resources.yaml` |
 | Notes | Add `src/content/notes/*.md` files (frontmatter: `title` / `date` / `description`). |
 | Profile text | Hero section in `src/pages/index.astro` |
 
-To use work icon images, place them in `src/assets/works/`, import them in `works.ts`, and pass them to `icon`. If omitted, an initial-letter tile is shown.
+To use work icon images, place them in `src/assets/works/` and set `icon: ../assets/works/<name>.png` (path relative to `works.yaml`). If omitted, an initial-letter tile is shown.
 
 ## Pre-Publish Checklist
 
-- [ ] `src/data/works.ts` - Review the 3 work descriptions marked with `TODO` comments (CarpetSuppression / worldEdit-RegexSupport / minecraft-server-launcher).
-- [ ] `src/data/resources.ts` - Replace placeholder links.
+- [ ] `src/content/works.yaml` - Review the 3 work descriptions marked with `TODO` comments (CarpetSuppression / worldEdit-RegexSupport / minecraft-server-launcher).
+- [ ] `src/content/resources.yaml` - Replace placeholder links.
 - [ ] `src/pages/index.astro` - Adjust the profile text and avatar image.
 - [ ] `public/CNAME` - Set the actual custom domain (currently `example.com`).
 - [ ] `astro.config.mjs` `site` - Set the actual domain URL.

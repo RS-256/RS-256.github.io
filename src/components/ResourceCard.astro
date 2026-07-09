@@ -9,7 +9,7 @@ interface Props {
 }
 const { resource } = Astro.props;
 
-// Discord 招待リンクはビルド時にサーバー名・アイコン・メンバー数を取得して焼き込む
+// Resolve Discord invite names, icons, and member counts at build time.
 const links = await Promise.all(
   resource.links.map(async (link) => ({
     ...link,

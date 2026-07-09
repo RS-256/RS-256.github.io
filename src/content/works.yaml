@@ -1,0 +1,81 @@
+# ---- Featured ----
+- id: infinote
+  title: Infinote
+  description: ノートブロックを拡張するサーバーサイド Fabric Mod。カスタム音源の追加、ほぼ無制限のピッチシフト、音量調整に対応。
+  details: サーバーサイドで動作するノートブロック拡張 Fabric Mod。カスタム音源の追加、バニラの制限を超えるピッチシフト、音量コントロールに対応します。音源はサーバー側リソースパックで配布できるため、クライアントは Mod なしでも演奏を聴けます(導入すればピッチ制限も拡張されます)。マルチプレイでの合奏・ゲーム内演奏の基盤になる Mod です。
+  links:
+    source: https://github.com/RS-256/infinote
+    download: https://modrinth.com/mod/infinote
+  category: minecraft-mods
+  featured: true
+  icon: ../assets/works/infinote.png
+  pixelated: true
+
+- id: mc-animator
+  title: mc animator
+  description: Vue + Three.js 製の Minecraft 風アニメーションレンダラー。ブラウザ上でレンダリングし、PNG 連番や MP4 などで書き出せる。
+  details: Vue + TypeScript + Three.js 製の Minecraft 風アニメーションレンダラー。ブラウザだけでキーフレームアニメーションを作成し、PNG 連番・MP4(H.264 / H.265 / AV1)・ロスレス MKV(FFV1)で書き出せます。エンコードには WebCodecs と ffmpeg.wasm を使用。インストール不要でブラウザからそのまま使えます。
+  links:
+    source: https://github.com/RS-256/mc_animator
+    site: https://rs-256.github.io/mc_animator/
+  category: web-tools
+  featured: true
+
+- id: dnw
+  title: DNW - Note Block DAW
+  description: 音ブロックのための DAW。Infinote と連携し、ゲーム内での楽曲演奏を目標としたプロジェクト。
+  details: 音ブロックのための DAW(Note Block DAW)。gametick basedのタイムラインで、ゲームに書き出してもズレない譜面が作成可能。ピアノロール、テンポトラック、トラックごとの音量・パン・ミュート・ソロ、オニオンスキン表示などを備え、これ一つで完結。
+  links:
+    source: https://github.com/RS-256/DNW
+  category: web-tools
+  featured: true
+
+- id: histree
+  title: histree
+  description: 各タブの閲覧履歴をツリーで管理する Chrome / Edge 拡張機能。分岐した履歴もサイドパネルからワンクリックで戻れる。
+  details: 各タブの閲覧履歴をツリー構造で管理する Chrome / Edge 拡張機能。ページ遷移が分岐しても履歴が失われず、サイドパネルのツリーから任意のページへワンクリックで戻れます。ノードは favicon 表示でコンパクト、現在位置はリングでハイライトされ、タブを切り替えるとツリーも自動で切り替わります。
+  links:
+    source: https://github.com/RS-256/histree
+  category: apps-extensions
+  featured: true
+  icon: ../assets/works/histree.png
+
+# ---- Minecraft Mods ----
+- id: crosspatch
+  title: CrossPatch
+  description: Litematica・ItemScroller・TweakerMore まわりの互換パッチと QoL 機能を追加するクライアントサイド Fabric Mod。
+  links:
+    source: https://github.com/RS-256/CrossPatch
+  category: minecraft-mods
+
+- id: worldedit-regex-support
+  title: worldEdit-RegexSupport
+  description: WorldEdit に正規表現サポートを追加する開発中の Fabric Mod。
+  details: WorldEdit に正規表現サポートを追加する Fabric Mod。変更点が少しのためアップデートのみ対応。
+  links:
+    source: https://github.com/RS-256/worldEdit-RegexSupport
+  category: minecraft-mods
+
+# ---- Apps & Extensions ----
+- id: audio-to-midi-converter
+  title: Audio to MIDI Converter
+  description: WAV / MP4 音源を MIDI に変換するローカルアプリ。Demucs でステム分離し、Basic Pitch で採譜してピアノロールでプレビューできる。
+  links:
+    source: https://github.com/RS-256/audio-to-midi-converter
+  category: apps-extensions
+
+- id: minecraft-server-launcher
+  title: minecraft-server-launcher
+  description: Minecraft サーバーの起動を補助するランチャー。
+  details: Minecraft サーバーの起動を補助するランチャー。サーバーの jar を指定して起動するだけでなく、サーバーのバージョンや Mod の依存関係を自動で解決し、必要なファイルをダウンロードしてくれる。いまのところはFabricのみに対応。
+  links:
+    source: https://github.com/RS-256/minecraft-server-launcher
+  category: apps-extensions
+
+# ---- Scripts ----
+- id: script-collection
+  title: scriptCollection
+  description: 自作 Carpet Script をまとめたスクリプト集。deathpoint.sc など、サーバー内での作業を補助するスクリプト群(1.20.1 でテスト済み)。
+  links:
+    source: https://github.com/RS-256/scriptCollection
+  category: scripts

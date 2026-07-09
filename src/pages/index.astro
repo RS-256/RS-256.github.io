@@ -7,9 +7,11 @@ import SectionHeading from "../components/SectionHeading.astro";
 import WorkCard from "../components/WorkCard.astro";
 import SocialLinks from "../components/SocialLinks.astro";
 import VideoCard from "../components/VideoCard.astro";
-import { featuredWorks } from "../data/works";
+import { getFeaturedWorks } from "../data/works";
 import { channel, featuredVideos } from "../data/videos";
 import { aboutParagraphs, skillGroups } from "../data/about";
+
+const featuredWorks = await getFeaturedWorks();
 
 const subPages = [
   {

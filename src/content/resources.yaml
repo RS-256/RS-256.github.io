@@ -1,0 +1,70 @@
+# /resources のリンク集。1 エントリ = 1 グループ、items の 1 要素 = 1 カード。
+# links が 1 件のカードはクリックで直接開き、複数ならポップアップで一覧表示。
+# Discord 招待リンクはビルド時にサーバー名・アイコン・人数を自動取得する。
+# TODO: プレースホルダーを含むので、よく使うサイト・データに差し替え/追記する。
+
+- id: dev-docs
+  label: 開発ドキュメント
+  items:
+    - title: MDN Web Docs
+      description: Web 技術の一次資料。HTML / CSS / JS はまずここ。
+      links:
+        - label: MDN Web Docs
+          url: https://developer.mozilla.org/ja/
+    - title: Fabric Wiki
+      description: Fabric Mod 開発の公式ドキュメント。
+      links:
+        - label: Fabric Wiki
+          url: https://fabricmc.net/wiki/
+    - title: Astro Docs
+      description: このサイトでも使っている Astro の公式ドキュメント。
+      links:
+        - label: Astro Docs
+          url: https://docs.astro.build/ja/
+
+- id: data-tools
+  label: データ・ツール
+  items:
+    - title: Minecraft Wiki
+      description: ゲーム内データの確認に。
+      links:
+        - label: Minecraft Wiki
+          url: https://ja.minecraft.wiki/
+    - title: MCstacker
+      description: command generator。なんでもできる。
+      links:
+        - label: MCstacker
+          url: https://mcstacker.net/
+    - title: よく使うデータ
+      description: よく参照するデータ。
+      links:
+        - label: MCPropertyEncyclopedia
+          description: Minecraft のブロック・アイテムのプロパティ一覧。必要な性質から逆引きするときに使う。
+          url: https://joakimthorsen.github.io/MCPropertyEncyclopedia/
+    - title: minecraft source data
+      description: Minecraft のソースコードのあれこれ
+      links:
+        - label: mapping.dev
+          url: https://mappings.dev/
+        - label: mcsrc.dev
+          url: https://mcsrc.dev/
+
+
+- id: community
+  label: コミュニティ・配布先
+  items:
+    - title: Modrinth
+      description: Mod の主な配布先プラットフォーム。
+      links:
+        - label: Modrinth
+          url: https://modrinth.com/
+    - title: Invite Links
+      description: 参加しているコミュニティへの招待リンク集。クリックで一覧を表示。
+      details: 参加しているコミュニティ・サーバーの招待リンク集。
+      links:
+        - label: やまゆーの Discord サーバー
+          url: https://discord.gg/yGJh3SjyV
+          description: 自分のコミュニティサーバー
+        - label: noteblock server
+          url: https://discord.gg/U6tZ5Evx78
+          description: 日本の音ブロック強い人詰め合わせセット
