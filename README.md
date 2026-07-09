@@ -25,15 +25,6 @@ npm run preview  # Preview the built site
 
 To use work icon images, place them in `src/assets/works/` and set `icon: ../assets/works/<name>.png` (path relative to `works.yaml`). If omitted, an initial-letter tile is shown.
 
-## Pre-Publish Checklist
-
-- [X] `src/content/works.yaml` - Review the 3 work descriptions marked with `TODO` comments (CarpetSuppression / worldEdit-RegexSupport / minecraft-server-launcher).
-- [X] `src/content/resources.yaml` - Replace placeholder links.
-- [X] `src/pages/index.astro` - Adjust the profile text and avatar image.
-- [ ] `public/CNAME` - Set the actual custom domain (currently `example.com`).
-- [ ] `astro.config.mjs` `site` - Set the actual domain URL.
-- [X] `src/content/notes/markdown-sample.md` - Sample article for display checks; delete it if unnecessary.
-
 ## Deployment
 
 Pushing to `main` triggers GitHub Actions (`.github/workflows/deploy.yml`) to build and publish the site to GitHub Pages.
