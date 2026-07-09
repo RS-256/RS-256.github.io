@@ -1,8 +1,3 @@
-# /resources のリンク集。1 エントリ = 1 グループ、items の 1 要素 = 1 カード。
-# links が 1 件のカードはクリックで直接開き、複数ならポップアップで一覧表示。
-# Discord 招待リンクはビルド時にサーバー名・アイコン・人数を自動取得する。
-# TODO: プレースホルダーを含むので、よく使うサイト・データに差し替え/追記する。
-
 - id: dev-docs
   label: 開発ドキュメント
   items:
@@ -26,7 +21,7 @@
   label: データ・ツール
   items:
     - title: Minecraft Wiki
-      description: ゲーム内データの確認に。
+      description: ゲーム内データの確認に。最近は意外と充実してきている。
       links:
         - label: Minecraft Wiki
           url: https://ja.minecraft.wiki/
