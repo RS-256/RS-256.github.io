@@ -17,7 +17,7 @@
   details: Vue + TypeScript + Three.js 製の Minecraft 風アニメーションレンダラー。ブラウザだけでキーフレームアニメーションを作成し、PNG 連番・MP4(H.264 / H.265 / AV1)・ロスレス MKV(FFV1)で書き出せます。エンコードには WebCodecs と ffmpeg.wasm を使用。インストール不要でブラウザからそのまま使えます。
   links:
     source: https://github.com/RS-256/mc_animator
-    site: https://rs-256.github.io/mc_animator/
+    site: https://rs256.net/mc_animator/
   category: web-tools
   featured: true
 
