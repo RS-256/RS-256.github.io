@@ -31,11 +31,14 @@
         - label: MCstacker
           url: https://mcstacker.net/
     - title: よく使うデータ
-      description: よく参照するデータ。
+      description: よく参照する生データ。
       links:
         - label: MCPropertyEncyclopedia
           description: Minecraft のブロック・アイテムのプロパティ一覧。必要な性質から逆引きするときに使う。
           url: https://joakimthorsen.github.io/MCPropertyEncyclopedia/
+        - label:
+          description: minecraftのassets。バニラのリソースパックの構造を確認できる。
+          url: https://mcasset.cloud/
     - title: minecraft source data
       description: Minecraft のソースコードのあれこれ
       links:
@@ -43,7 +46,6 @@
           url: https://mappings.dev/
         - label: mcsrc.dev
           url: https://mcsrc.dev/
-
 
 - id: community
   label: コミュニティ・配布先
@@ -63,3 +65,6 @@
         - label: noteblock server
           url: https://discord.gg/U6tZ5Evx78
           description: 日本の音ブロック強い人詰め合わせセット
+        - label: AMATERAS
+          url: https://discord.gg/MR878KhsCj
+          description: 自分が所属しているSMP。
