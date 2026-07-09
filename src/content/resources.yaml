@@ -36,7 +36,7 @@
         - label: MCPropertyEncyclopedia
           description: Minecraft のブロック・アイテムのプロパティ一覧。必要な性質から逆引きするときに使う。
           url: https://joakimthorsen.github.io/MCPropertyEncyclopedia/
-        - label:
+        - label: mcasset.cloud
           description: minecraftのassets。バニラのリソースパックの構造を確認できる。
           url: https://mcasset.cloud/
     - title: minecraft source data
