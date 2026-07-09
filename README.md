@@ -29,10 +29,10 @@ To use work icon images, place them in `src/assets/works/` and set `icon: ../ass
 
 - [X] `src/content/works.yaml` - Review the 3 work descriptions marked with `TODO` comments (CarpetSuppression / worldEdit-RegexSupport / minecraft-server-launcher).
 - [X] `src/content/resources.yaml` - Replace placeholder links.
-- [ ] `src/pages/index.astro` - Adjust the profile text and avatar image.
+- [X] `src/pages/index.astro` - Adjust the profile text and avatar image.
 - [ ] `public/CNAME` - Set the actual custom domain (currently `example.com`).
 - [ ] `astro.config.mjs` `site` - Set the actual domain URL.
-- [ ] `src/content/notes/markdown-sample.md` - Sample article for display checks; delete it if unnecessary.
+- [X] `src/content/notes/markdown-sample.md` - Sample article for display checks; delete it if unnecessary.
 
 ## Deployment
 
