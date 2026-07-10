@@ -29,6 +29,7 @@
     source: https://github.com/RS-256/DNW
   category: web-tools
   featured: true
+  icon: ../assets/works/DNW.png
 
 - id: histree
   title: histree
