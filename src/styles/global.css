@@ -102,3 +102,9 @@ dialog[open]::backdrop {
   --tw-prose-counters: var(--c-accent);
   --tw-prose-captions: var(--c-muted);
 }
+
+/* Allow long display equations (KaTeX) to scroll horizontally on narrow screens. */
+.prose .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}

@@ -2,6 +2,8 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 export default defineConfig({
   site: "https://rs256.net",
@@ -12,6 +14,11 @@ export default defineConfig({
     domains: ["cdn.discordapp.com"],
   },
   integrations: [icon()],
+  markdown: {
+    // Render TeX math ($...$ / $$...$$) in note Markdown with KaTeX at build time.
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
+  },
   vite: {
     plugins: [tailwindcss()],
   },

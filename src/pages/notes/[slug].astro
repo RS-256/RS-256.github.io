@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import { Icon } from "astro-icon/components";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import "katex/dist/katex.min.css";
 
 export async function getStaticPaths() {
   const notes = await getCollection("notes");
