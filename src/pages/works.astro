@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import WorkCard from "../components/WorkCard.astro";
 import { getWorksByCategory } from "../data/works";
@@ -15,6 +16,32 @@ const groups = await getWorksByCategory();
       これまでに作ったもの一覧。カードをクリックすると配布・利用ページに移動します。
     </p>
   </header>
+
+  <!-- Banner leading to the noteblock pipeline overview. -->
+  <a
+    href="/noteblock"
+    class="group mb-12 flex items-center gap-4 rounded-2xl border border-line bg-surface p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10"
+  >
+    <div
+      class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent-strong"
+    >
+      <Icon name="lucide:music" class="size-5" />
+    </div>
+    <div class="min-w-0">
+      <h2
+        class="flex items-center gap-1.5 font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent group-hover:decoration-accent/50"
+      >
+        音ブロック関連ツールは連携して使えます
+        <Icon
+          name="lucide:chevron-right"
+          class="size-4 shrink-0 text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-accent"
+        />
+      </h2>
+      <p class="mt-1 text-sm text-muted">
+        音源の MIDI 化から譜面制作、ゲーム内演奏までの全体像は Note Block ページへ。
+      </p>
+    </div>
+  </a>
 
   <div class="flex flex-col gap-12 pb-4">
     {

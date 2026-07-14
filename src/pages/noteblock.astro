@@ -1,0 +1,172 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import WorkDialog from "../components/WorkDialog.astro";
+import VideoCard from "../components/VideoCard.astro";
+import { getWorks } from "../data/works";
+import {
+  pipelineSteps,
+  capabilities,
+  noteblockVideos,
+} from "../data/noteblock";
+
+const works = await getWorks();
+const steps = pipelineSteps.map((step) => {
+  const work = works.find((w) => w.id === step.workId);
+  if (!work) throw new Error(`noteblock.ts: unknown workId "${step.workId}"`);
+  return { ...step, work, dialogId: `work-dialog-${work.id}` };
+});
+---
+
+<BaseLayout
+  title="Note Block"
+  description="Minecraft のノートブロック演奏を支える自作ツール群の紹介。音源の MIDI 化から譜面制作、ゲーム内演奏までこのサイトのツールで完結します。"
+>
+  <header class="relative pb-12 pt-14 sm:pt-20">
+    <!-- Musical note decoration, denser here since this page is about music. -->
+    <div
+      class="pointer-events-none absolute inset-0 select-none font-display"
+      aria-hidden="true"
+    >
+      <span class="absolute right-[6%] top-10 rotate-12 text-3xl text-accent/25"
+        >♪</span
+      >
+      <span
+        class="absolute bottom-2 right-[28%] -rotate-6 text-xl text-accent/15"
+        >♫</span
+      >
+      <span
+        class="absolute left-[38%] top-6 -rotate-12 text-2xl text-accent/15"
+        >♩</span
+      >
+    </div>
+    <h1 class="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+      Note Block<span class="text-accent">.</span>
+    </h1>
+    <p class="mt-3 max-w-2xl leading-relaxed text-muted">
+      Minecraft のノートブロックで本格的に楽曲を演奏するためのツール群を作っています。音源の用意から譜面制作、ゲーム内での演奏まで、このサイトのツールだけで完結します。
+    </p>
+  </header>
+
+  <!-- Production pipeline -->
+  <section class="pb-16 sm:pb-20">
+    <SectionHeading
+      title="Workflow"
+      subtitle="1 曲できるまでの流れ。カードをクリックすると各ツールの詳細が開きます"
+    />
+    <ol class="flex flex-col">
+      {
+        steps.map((step, i) => (
+          <li class="relative flex items-center gap-4 pb-3 last:pb-0">
+            {i > 0 && (
+              <span
+                class="absolute left-[15px] top-0 h-1/2 w-0.5 bg-accent/20"
+                aria-hidden="true"
+              />
+            )}
+            {i < steps.length - 1 && (
+              <span
+                class="absolute bottom-0 left-[15px] top-1/2 w-0.5 bg-accent/20"
+                aria-hidden="true"
+              />
+            )}
+            <span class="z-10 flex size-8 shrink-0 items-center justify-center rounded-full border-2 border-accent/40 bg-accent-soft font-display text-sm font-bold text-accent-strong">
+              {i + 1}
+            </span>
+            <button
+              type="button"
+              data-dialog-target={step.dialogId}
+              class="group flex min-w-0 flex-1 cursor-pointer items-center gap-4 rounded-2xl border border-line bg-surface p-4 text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10"
+            >
+              {step.work.icon ? (
+                <Image
+                  src={step.work.icon}
+                  alt=""
+                  width={Math.min(step.work.icon.width, 96)}
+                  height={Math.min(step.work.icon.height, 96)}
+                  class:list={[
+                    "size-12 shrink-0 rounded-xl object-cover",
+                    step.work.pixelated && "[image-rendering:pixelated]",
+                  ]}
+                />
+              ) : (
+                <div class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent-strong">
+                  <Icon name={step.icon} class="size-6" />
+                </div>
+              )}
+              <div class="min-w-0">
+                <h3 class="flex items-center gap-1.5 font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent group-hover:decoration-accent/50">
+                  <span class="truncate">
+                    {step.title}
+                    <span class="font-medium text-muted">
+                      — {step.work.title}
+                    </span>
+                  </span>
+                  <Icon
+                    name="lucide:maximize-2"
+                    class="size-3.5 shrink-0 text-muted opacity-0 transition-opacity group-hover:opacity-100"
+                  />
+                </h3>
+                <p class="mt-1 text-sm leading-relaxed text-muted">
+                  {step.description}
+                </p>
+              </div>
+            </button>
+            <WorkDialog work={step.work} dialogId={step.dialogId} />
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="pb-16 sm:pb-20">
+    <SectionHeading
+      title="Features"
+      subtitle="これらのツールでできるようになること"
+    />
+    <ul class="flex flex-wrap gap-2">
+      {
+        capabilities.map((capability) => (
+          <li class="flex items-center gap-2 rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm shadow-sm">
+            <Icon name={capability.icon} class="size-4 text-accent" />
+            {capability.label}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Videos made with the pipeline. Hidden until noteblock.ts has entries. -->
+  {
+    noteblockVideos.length > 0 && (
+      <section class="pb-16 sm:pb-20">
+        <SectionHeading
+          title="Videos"
+          subtitle="このワークフローで制作した演奏動画"
+        />
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {noteblockVideos.map((video) => (
+            <VideoCard video={video} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Closing CTA -->
+  <section class="text-center">
+    <a
+      href="/works"
+      class="group inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-5 py-2.5 text-sm font-bold text-accent-strong transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:shadow-accent/15"
+    >
+      ほかの作品も見る
+      <Icon
+        name="lucide:arrow-right"
+        class="size-4 transition-transform group-hover:translate-x-0.5"
+      />
+    </a>
+  </section>
+</BaseLayout>
