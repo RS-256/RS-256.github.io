@@ -42,6 +42,14 @@
   icon: ../assets/works/histree.png
 
 # ---- Minecraft Mods ----
+- id: flashback-lossless-audio-exporter
+  title: FLAE - Flashback Lossless Audio Exporter
+  description: Flashback の動画エクスポートと同時に、ロスレス WAV の音声を書き出す Fabric Mod。TPS が低下しても音がズレない。
+  details: Flashback の動画エクスポートに合わせて、音声を 32bit float PCM(48kHz)のロスレス WAV として並行出力する Fabric Mod。TPS が低下しても音がズレない決定論的な録音ができるため、ノートブロック演奏の収録に向いています。音声のみのエクスポートモードや、WAV フォーマット・サンプルレートの選択にも対応。
+  links:
+    source: https://github.com/RS-256/flashbackLosslessAudioExporter
+  category: minecraft-mods
+
 - id: crosspatch
   title: CrossPatch
   description: Litematica・ItemScroller・TweakerMore まわりの互換パッチと QoL 機能を追加するクライアントサイド Fabric Mod。

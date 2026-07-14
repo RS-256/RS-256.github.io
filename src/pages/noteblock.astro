@@ -10,6 +10,7 @@ import {
   pipelineSteps,
   capabilities,
   noteblockVideos,
+  guide,
 } from "../data/noteblock";
 
 const works = await getWorks();
@@ -119,6 +120,32 @@ const steps = pipelineSteps.map((step) => {
         ))
       }
     </ol>
+
+    <!-- Guide banner. Hidden until noteblock.ts sets `guide`. -->
+    {
+      guide && (
+        <a
+          href={guide.href}
+          class="group mt-6 flex items-center gap-4 rounded-2xl border border-line bg-surface p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10"
+        >
+          <div class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent-strong">
+            <Icon name="lucide:book-open" class="size-5" />
+          </div>
+          <div class="min-w-0">
+            <h3 class="flex items-center gap-1.5 font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent group-hover:decoration-accent/50">
+              {guide.title}
+              <Icon
+                name="lucide:chevron-right"
+                class="size-4 shrink-0 text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-accent"
+              />
+            </h3>
+            <p class="mt-1 text-sm text-muted">
+              このワークフローの詳しい手順は Notes の記事にまとめています。
+            </p>
+          </div>
+        </a>
+      )
+    }
   </section>
 
   <!-- Capabilities -->

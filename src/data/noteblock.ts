@@ -36,6 +36,12 @@ export const pipelineSteps: PipelineStep[] = [
     description: "カスタム音源・ピッチ拡張・音量調整。クライアント Mod なしでも聴ける。",
     icon: "lucide:box",
   },
+  {
+    workId: "flashback-lossless-audio-exporter",
+    title: "演奏を収録する",
+    description: "Flashback の録画と同時に、TPS の影響を受けないロスレス WAV を書き出し。",
+    icon: "lucide:video",
+  },
 ];
 
 /** Feature chips for the できること section. */
@@ -46,7 +52,15 @@ export const capabilities = [
   { icon: "lucide:timer", label: "tick 単位でズレない譜面" },
   { icon: "lucide:users", label: "クライアント Mod なしで聴ける" },
   { icon: "lucide:file-music", label: "音源からの自動採譜" },
+  { icon: "lucide:mic", label: "ズレないロスレス録音" },
 ];
+
+/**
+ * Link to the how-to article on /notes.
+ * null hides the guide banner on /noteblock; once the article is published,
+ * set e.g. { href: "/notes/noteblock-guide", title: "使い方ガイドを読む" }.
+ */
+export const guide: { href: string; title: string } | null = null;
 
 /**
  * Videos demonstrating the pipeline (tools actually in use).
