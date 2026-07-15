@@ -57,6 +57,14 @@
     source: https://github.com/RS-256/CrossPatch
   category: minecraft-mods
 
+- id: blocktuner-pitchsmith
+  title: BlockTuner pitchsmith
+  description: ノートブロックの調律 UI を追加する Fabric Mod。BlockTuner のフォークで、キーボードや MIDI デバイスからの演奏にも対応。
+  details: BlockTuner の Fabric フォーク。ノートブロックを Ctrl+右クリックすると調律 UI が開き、Ctrl+ミドルクリックで調律済みのブロックをピックアップできます。ピアノキーボード UI からの演奏や MIDI デバイス入力にも対応。サーバーに導入すればクライアント側のインストールなしでも動作します。
+  links:
+    source: https://github.com/RS-256/BlockTuner-pitchsmith
+  category: minecraft-mods
+
 - id: worldedit-regex-support
   title: worldEdit-RegexSupport
   description: WorldEdit に正規表現サポートを追加する開発中の Fabric Mod。
@@ -64,6 +72,16 @@
   links:
     source: https://github.com/RS-256/worldEdit-RegexSupport
   category: minecraft-mods
+
+# ---- Web Tools ----
+- id: dust-notifier-order-calc
+  title: dustNotifierOrderCalc
+  description: レッドストーンダストの更新通知順序を計算・可視化する Web ツール。座標から順序を求めるモードと、観測した順序から座標候補を逆算するモードを備える。
+  details: Java Edition のレッドストーンダストが隣接ブロックへ通知する順序は、BlockPos のハッシュ値と HashSet の内部挙動によって座標ごとに決まります。このツールは、座標を入力して 7 方向の更新順序を等角投影で可視化する「Coord → Order」と、観測した順序から該当する座標候補を逆算する「Order → Coord」の 2 モードを搭載。仕組みの解説ドキュメントも公開しています。
+  links:
+    source: https://github.com/RS-256/dustNotifierOrderCalc
+    site: https://rs256.net/dustNotifierOrderCalc/
+  category: web-tools
 
 # ---- Apps & Extensions ----
 - id: audio-to-midi-converter
