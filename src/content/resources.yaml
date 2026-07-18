@@ -61,10 +61,16 @@
       links:
         - label: やまゆーの Discord サーバー
           url: https://discord.gg/yGJh3SjyV
-          description: 自分のコミュニティサーバー
+          description: 自分のコミュニティサーバー。一番よく生息している
         - label: noteblock server
           url: https://discord.gg/U6tZ5Evx78
           description: 日本の音ブロック強い人詰め合わせセット
         - label: AMATERAS
           url: https://discord.gg/MR878KhsCj
           description: 自分が所属しているSMP。
+        - label: storage tech
+          url: https://discord.gg/JufJ6uf
+          description: storageこねこね部屋
+        - label: storage catalog
+          url: https://discord.gg/2Q7fK2PXSV
+          description: storageこねこね部屋2
