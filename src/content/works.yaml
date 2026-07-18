@@ -83,6 +83,15 @@
     site: https://rs256.net/dustNotifierOrderCalc/
   category: web-tools
 
+- id: midi-to-litematic-converter
+  title: midi-to-litematic-converter
+  description: MIDI ファイルから音ブロックの配置を自動生成し、.litematic 形式で書き出すブラウザアプリ。ピアノロールでのプレビューに対応。
+  details: MIDI ファイルを読み込んで音ブロックのレイアウトを自動生成し、Litematica で使える .litematic ファイルとして書き出すブラウザアプリ。トラック情報(ノート数・PPQ・テンポ)の表示、ピアノロールでのノートプレビュー、トラックごとの表示・エクスポート切り替え、メロディックトラックのベースノート設定、パーカッションの検出に対応。すべてクライアントサイドで動作します。
+  links:
+    source: https://github.com/RS-256/midi-to-litematic-converter
+    site: https://rs256.net/midi-to-litematic-converter/
+  category: web-tools
+
 # ---- Apps & Extensions ----
 - id: audio-to-midi-converter
   title: Audio to MIDI Converter
