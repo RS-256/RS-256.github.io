@@ -108,6 +108,16 @@
     source: https://github.com/RS-256/minecraft-server-launcher
   category: apps-extensions
 
+- id: mc-furnace
+  title: mc-furnace
+  description: Minecraft の各バージョンをデコンパイルし、Git コミットとして積み上げるパイプライン CLI。git diff でバージョン間の変更を追跡できる。
+  details: Minecraft(Java Edition)のソースコードとデータファイルをバージョンごとに Git コミットとして保存するリポジトリを生成する CLI ツール。スナップショット・プレリリース・正式版を時系列で積み上げ、git diff でバージョン間の変更を追跡できます。エイプリルフール版は専用ブランチで管理。ツールのバージョンを固定した決定論的な出力により、bit-identical な再生成を保証します(Java 21+)。
+  links:
+    source: https://github.com/RS-256/mc-furnace
+  category: apps-extensions
+  icon: ../assets/works/mc-furnace.png
+  pixelated: true
+
 # ---- Scripts ----
 - id: script-collection
   title: scriptCollection
