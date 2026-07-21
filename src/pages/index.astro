@@ -87,7 +87,7 @@ const subPages = [
   <!-- About -->
   <section id="about" class="pb-16 sm:pb-20">
     <SectionHeading title="About" />
-    <div class="grid gap-8 lg:grid-cols-5">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-5">
       <div class="flex flex-col gap-4 lg:col-span-2">
         {
           aboutParagraphs.map((paragraph) => (
@@ -145,7 +145,7 @@ const subPages = [
       title="Featured Works"
       subtitle="代表的な作品をピックアップ"
     />
-    <div class="grid gap-4 sm:grid-cols-2">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
       {featuredWorks.map((work) => <WorkCard work={work} />)}
     </div>
     <div class="mt-6 text-center">
@@ -165,7 +165,7 @@ const subPages = [
   <!-- Videos -->
   <section class="pb-16 sm:pb-20">
     <SectionHeading title="Videos" subtitle={channel.name} />
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {featuredVideos.map((video) => <VideoCard video={video} />)}
     </div>
     <div class="mt-6 text-center">
@@ -187,7 +187,7 @@ const subPages = [
 
   <!-- Links to Notes / Resources -->
   <section>
-    <div class="grid gap-4 sm:grid-cols-2">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
       {
         subPages.map((page) => (
           <a

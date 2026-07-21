@@ -54,7 +54,7 @@ const groups = await getWorksByCategory();
             <span class="text-sm text-muted">{items.length} 件</span>
           </div>
           <p class="mb-5 -mt-3 text-sm text-muted">{category.description}</p>
-          <div class="grid gap-4 sm:grid-cols-2">
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {items.map((work) => (
               <WorkCard work={work} showCategory={false} />
             ))}
