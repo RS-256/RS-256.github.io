@@ -13,13 +13,14 @@
     "format": "biome format --write ./src"
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^7.2.1",
     "@fontsource-variable/m-plus-2": "^5.3.0",
     "@fontsource/m-plus-rounded-1c": "^5.3.0",
     "@iconify-json/lucide": "^1.2.119",
     "@iconify-json/simple-icons": "^1.2.91",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^5.12.0",
+    "astro": "^7.1.3",
     "astro-icon": "^1.1.5",
     "katex": "^0.18.1",
     "rehype-katex": "^7.0.1",
