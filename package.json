@@ -13,6 +13,7 @@
     "format": "biome format --write ./src"
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^7.2.1",
     "@fontsource-variable/m-plus-2": "^5.3.0",
     "@fontsource/m-plus-rounded-1c": "^5.3.0",
     "@iconify-json/lucide": "^1.2.119",
