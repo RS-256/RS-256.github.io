@@ -1,28 +1,31 @@
 ---
-import "../styles/global.css";
-import "@fontsource-variable/m-plus-2";
-import "@fontsource/m-plus-rounded-1c/700.css";
-import "@fontsource/m-plus-rounded-1c/800.css";
-import ThemeToggle from "../components/ThemeToggle.astro";
-import { socialLinks } from "../data/links";
-import { Icon } from "astro-icon/components";
+import "../styles/global.css"
+import "@fontsource-variable/m-plus-2"
+import "@fontsource/m-plus-rounded-1c/700.css"
+import "@fontsource/m-plus-rounded-1c/800.css"
+import ThemeToggle from "../components/ThemeToggle.astro"
+import { socialLinks } from "../data/links"
+import { Icon } from "astro-icon/components"
 
 interface Props {
-  title?: string;
-  description?: string;
+  title?: string
+  description?: string
 }
 
-const SITE_NAME = "rs256 | やまゆー";
-const { title, description = "rs256(やまゆー)のポートフォリオサイト。制作した Minecraft Mod や Web ツールなどを紹介しています。" } = Astro.props;
-const pageTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
+const SITE_NAME = "rs256 | やまゆー"
+const {
+  title,
+  description = "rs256(やまゆー)のポートフォリオサイト。制作した Minecraft Mod や Web ツールなどを紹介しています。"
+} = Astro.props
+const pageTitle = title ? `${ title } | ${ SITE_NAME }` : SITE_NAME
 
 const navItems = [
   { href: "/works", label: "Works" },
   { href: "/noteblock", label: "Note Block" },
   { href: "/notes", label: "Notes" },
-  { href: "/resources", label: "Resources" },
-];
-const currentPath = Astro.url.pathname;
+  { href: "/resources", label: "Resources" }
+]
+const currentPath = Astro.url.pathname
 ---
 
 <!doctype html>
@@ -52,21 +55,6 @@ const currentPath = Astro.url.pathname;
     </script>
   </head>
   <body class="flex min-h-svh flex-col">
-    <!-- Shared page background decoration with soft pastel glow. -->
-    <div class="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
-      <div
-        class="absolute -right-32 -top-32 size-96 rounded-full bg-glow-a opacity-40 blur-3xl"
-      >
-      </div>
-      <div
-        class="absolute -left-40 top-1/3 size-[28rem] rounded-full bg-glow-b opacity-30 blur-3xl"
-      >
-      </div>
-      <div
-        class="absolute -bottom-40 right-1/4 size-96 rounded-full bg-glow-a opacity-25 blur-3xl"
-      >
-      </div>
-    </div>
     <header
       class="sticky top-0 z-50 border-b border-line bg-base/80 backdrop-blur-md"
     >
@@ -75,7 +63,7 @@ const currentPath = Astro.url.pathname;
       >
         <a
           href="/"
-          class="font-display text-lg font-extrabold tracking-tight transition-colors hover:text-accent"
+          class="font-display text-lg font-extrabold tracking-tight transition-colors hover:text-accent-strong"
         >
           rs256<span class="text-accent">.</span>
         </a>
@@ -108,7 +96,7 @@ const currentPath = Astro.url.pathname;
       </div>
     </header>
 
-    <main class="mx-auto w-full max-w-5xl flex-1 px-4 sm:px-6">
+    <main class="relative mx-auto w-full max-w-5xl flex-1 px-4 sm:px-6">
       <slot />
     </main>
 

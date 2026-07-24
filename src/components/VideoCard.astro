@@ -1,11 +1,11 @@
 ---
-import { Icon } from "astro-icon/components";
-import { thumbnailUrl, videoUrl, type Video } from "../data/videos";
+import { Icon } from "astro-icon/components"
+import { thumbnailUrl, videoUrl, type Video } from "../data/videos"
 
 interface Props {
-  video: Video;
+  video: Video
 }
-const { video } = Astro.props;
+const { video } = Astro.props
 ---
 
 <a
@@ -32,7 +32,7 @@ const { video } = Astro.props;
     </div>
   </div>
   <h3
-    class="line-clamp-2 p-4 text-sm font-bold leading-relaxed text-ink transition-colors group-hover:text-accent"
+    class="line-clamp-2 p-4 text-sm font-bold leading-relaxed text-ink transition-colors group-hover:text-accent-strong"
   >
     {video.title}
   </h3>

@@ -1,9 +1,9 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import ResourceCard from "../components/ResourceCard.astro";
-import { getResourceGroups } from "../data/resources";
+import BaseLayout from "../layouts/BaseLayout.astro"
+import ResourceCard from "../components/ResourceCard.astro"
+import { getResourceGroups } from "../data/resources"
 
-const resourceGroups = await getResourceGroups();
+const resourceGroups = await getResourceGroups()
 ---
 
 <BaseLayout title="Resources" description="よく使うサイトや有用なデータへのリンク集。">

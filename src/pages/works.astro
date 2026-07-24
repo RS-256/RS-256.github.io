@@ -1,10 +1,10 @@
 ---
-import { Icon } from "astro-icon/components";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import WorkCard from "../components/WorkCard.astro";
-import { getWorksByCategory } from "../data/works";
+import { Icon } from "astro-icon/components"
+import BaseLayout from "../layouts/BaseLayout.astro"
+import WorkCard from "../components/WorkCard.astro"
+import { getWorksByCategory } from "../data/works"
 
-const groups = await getWorksByCategory();
+const groups = await getWorksByCategory()
 ---
 
 <BaseLayout title="Works" description="rs256(やまゆー)の全作品一覧。Minecraft Mod、Web ツール、調査・検証など。">
@@ -29,7 +29,7 @@ const groups = await getWorksByCategory();
     </div>
     <div class="min-w-0">
       <h2
-        class="flex items-center gap-1.5 font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent group-hover:decoration-accent/50"
+        class="flex items-center gap-1.5 font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent-strong group-hover:decoration-accent/50"
       >
         音ブロック関連ツールは連携して使えます
         <Icon
@@ -46,8 +46,10 @@ const groups = await getWorksByCategory();
   <div class="flex flex-col gap-12 pb-4">
     {
       groups.map(({ category, items }) => (
-        <section>
-          <div class="mb-5 flex items-baseline gap-3">
+        <section
+          style={`--cat-field: var(--cat-${category.id}-field); --cat-ink: var(--cat-${category.id}-ink);`}
+        >
+          <div class="mb-5 flex items-baseline gap-3 border-l-4 border-(--cat-ink) pl-3">
             <h2 class="font-display text-xl font-bold sm:text-2xl">
               {category.label}
             </h2>

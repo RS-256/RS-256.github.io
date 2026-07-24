@@ -1,0 +1,58 @@
+/*
+ * Shared design tokens for rs256.net and its tool sites.
+ * This file is framework-agnostic plain CSS: copy (or package) it into each
+ * tool repository so fonts, backgrounds, and accents stay consistent.
+ * Dark mode is driven by a .dark class on <html>.
+ */
+
+:root {
+  /* Light theme: pastel pink base */
+  --c-base: #fdf9fb;
+  --c-surface: #ffffff;
+  --c-surface-hover: #fff5f9;
+  --c-ink: #2e2329;
+  --c-muted: #74636e;
+  --c-line: #f1dde8;
+  --c-dot: rgba( 214, 72, 143, 0.08 );
+  --c-accent: #d6488f;
+  --c-accent-strong: #c02e78;
+  --c-accent-soft: #ffd9e8;
+  --c-glow-a: #ffd6e8;
+  --c-glow-b: #e3d9ff;
+
+  /* Category colors: field = surfaces (badges, tiles), ink = text on field.
+     All ink/field pairs measure >= 4.5:1. Pink stays reserved for the site chrome. */
+  --cat-minecraft-mods-field: #e2f0c4;
+  --cat-minecraft-mods-ink: #3f6b22;
+  --cat-web-tools-field: #cfe8f4;
+  --cat-web-tools-ink: #1f6180;
+  --cat-apps-extensions-field: #e0d9f8;
+  --cat-apps-extensions-ink: #54419e;
+  --cat-scripts-field: #ffe6b8;
+  --cat-scripts-ink: #8a5410;
+}
+
+.dark {
+  /* Dark theme: deep plum with pink accents */
+  --c-base: #17111a;
+  --c-surface: #211a26;
+  --c-surface-hover: #2a2130;
+  --c-ink: #f5edf3;
+  --c-muted: #b2a1ae;
+  --c-line: #382c3c;
+  --c-dot: rgba( 244, 144, 191, 0.07 );
+  --c-accent: #f490bf;
+  --c-accent-strong: #f7abd0;
+  --c-accent-soft: #3c2537;
+  --c-glow-a: #4a2a44;
+  --c-glow-b: #33294f;
+
+  --cat-minecraft-mods-field: #25331a;
+  --cat-minecraft-mods-ink: #bfe08f;
+  --cat-web-tools-field: #16303d;
+  --cat-web-tools-ink: #93cfe6;
+  --cat-apps-extensions-field: #2a2450;
+  --cat-apps-extensions-ink: #bfb0f0;
+  --cat-scripts-field: #3a2a10;
+  --cat-scripts-ink: #f0c977;
+}

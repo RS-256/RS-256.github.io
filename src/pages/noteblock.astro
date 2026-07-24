@@ -1,24 +1,19 @@
 ---
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import SectionHeading from "../components/SectionHeading.astro";
-import WorkDialog from "../components/WorkDialog.astro";
-import VideoCard from "../components/VideoCard.astro";
-import { getWorks } from "../data/works";
-import {
-  pipelineSteps,
-  capabilities,
-  noteblockVideos,
-  guide,
-} from "../data/noteblock";
+import { Image } from "astro:assets"
+import { Icon } from "astro-icon/components"
+import BaseLayout from "../layouts/BaseLayout.astro"
+import SectionHeading from "../components/SectionHeading.astro"
+import WorkDialog from "../components/WorkDialog.astro"
+import VideoCard from "../components/VideoCard.astro"
+import { getWorks } from "../data/works"
+import { pipelineSteps, capabilities, noteblockVideos, guide } from "../data/noteblock"
 
-const works = await getWorks();
-const steps = pipelineSteps.map((step) => {
-  const work = works.find((w) => w.id === step.workId);
-  if (!work) throw new Error(`noteblock.ts: unknown workId "${step.workId}"`);
-  return { ...step, work, dialogId: `work-dialog-${work.id}` };
-});
+const works = await getWorks()
+const steps = pipelineSteps.map( ( step ) => {
+  const work = works.find( ( w ) => w.id === step.workId )
+  if ( ! work ) throw new Error( `noteblock.ts: unknown workId "${ step.workId }"` )
+  return { ...step, work, dialogId: `work-dialog-${ work.id }` }
+} )
 ---
 
 <BaseLayout
@@ -98,7 +93,7 @@ const steps = pipelineSteps.map((step) => {
                 </div>
               )}
               <div class="min-w-0">
-                <h3 class="flex items-center gap-1.5 font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent group-hover:decoration-accent/50">
+                <h3 class="flex items-center gap-1.5 font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent-strong group-hover:decoration-accent/50">
                   <span class="truncate">
                     {step.title}
                     <span class="font-medium text-muted">
@@ -132,7 +127,7 @@ const steps = pipelineSteps.map((step) => {
             <Icon name="lucide:book-open" class="size-5" />
           </div>
           <div class="min-w-0">
-            <h3 class="flex items-center gap-1.5 font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent group-hover:decoration-accent/50">
+            <h3 class="flex items-center gap-1.5 font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent-strong group-hover:decoration-accent/50">
               {guide.title}
               <Icon
                 name="lucide:chevron-right"

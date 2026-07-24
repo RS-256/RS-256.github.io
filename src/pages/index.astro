@@ -1,58 +1,73 @@
 ---
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
-import avatar from "../assets/avatar.jpg";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import SectionHeading from "../components/SectionHeading.astro";
-import WorkCard from "../components/WorkCard.astro";
-import SocialLinks from "../components/SocialLinks.astro";
-import VideoCard from "../components/VideoCard.astro";
-import { getFeaturedWorks } from "../data/works";
-import { channel, featuredVideos } from "../data/videos";
-import { aboutParagraphs, skillGroups } from "../data/about";
+import { Image } from "astro:assets"
+import { Icon } from "astro-icon/components"
+import avatar from "../assets/avatar.jpg"
+import BaseLayout from "../layouts/BaseLayout.astro"
+import SectionHeading from "../components/SectionHeading.astro"
+import WorkCard from "../components/WorkCard.astro"
+import SocialLinks from "../components/SocialLinks.astro"
+import VideoCard from "../components/VideoCard.astro"
+import { getFeaturedWorks } from "../data/works"
+import { channel, featuredVideos } from "../data/videos"
+import { aboutParagraphs, skillGroups } from "../data/about"
 
-const featuredWorks = await getFeaturedWorks();
+const featuredWorks = await getFeaturedWorks()
 
 const subPages = [
   {
     href: "/notes",
     icon: "lucide:notebook-pen",
     title: "Notes",
-    description: "開発メモや技術記事など、書きものを置いています。",
+    description: "開発メモや技術記事など、書きものを置いています。"
   },
   {
     href: "/resources",
     icon: "lucide:library",
     title: "Resources",
-    description: "よく使うサイトや有用なデータへのリンク集。",
-  },
-];
+    description: "よく使うサイトや有用なデータへのリンク集。"
+  }
+]
 ---
 
 <BaseLayout>
+  <!-- Musical note decoration scattered across the whole page. -->
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 select-none font-display"
+    aria-hidden="true"
+  >
+    <span class="absolute right-[8%] top-[2%] rotate-12 text-3xl text-accent/25"
+      >♪</span
+    >
+    <span class="absolute right-[22%] top-[8%] -rotate-6 text-xl text-accent/15"
+      >♫</span
+    >
+    <span class="absolute left-[4%] top-[5%] -rotate-12 text-2xl text-accent/15"
+      >♩</span
+    >
+    <span class="absolute left-[2%] top-[27%] rotate-6 text-2xl text-accent/15"
+      >♬</span
+    >
+    <span class="absolute right-[3%] top-[37%] -rotate-12 text-xl text-accent/20"
+      >♪</span
+    >
+    <span class="absolute left-[5%] top-[54%] rotate-12 text-3xl text-accent/15"
+      >♫</span
+    >
+    <span class="absolute right-[5%] top-[62%] rotate-6 text-2xl text-accent/20"
+      >♩</span
+    >
+    <span class="absolute left-[3%] top-[77%] -rotate-6 text-xl text-accent/15"
+      >♪</span
+    >
+    <span class="absolute right-[9%] top-[88%] rotate-12 text-2xl text-accent/20"
+      >♬</span
+    >
+    <span class="absolute left-[10%] top-[96%] -rotate-12 text-xl text-accent/15"
+      >♫</span
+    >
+  </div>
   <!-- Hero -->
   <section class="relative pb-16 pt-16 sm:pb-20 sm:pt-24">
-    <div
-      class="pointer-events-none absolute -top-24 left-1/2 -z-10 h-80 w-[36rem] max-w-full -translate-x-1/2 rounded-full bg-gradient-to-r from-glow-a to-glow-b opacity-60 blur-3xl"
-      aria-hidden="true"
-    >
-    </div>
-    <!-- Musical note decoration for the note block creator theme. -->
-    <div
-      class="pointer-events-none absolute inset-0 select-none font-display"
-      aria-hidden="true"
-    >
-      <span class="absolute right-[8%] top-8 rotate-12 text-3xl text-accent/25"
-        >♪</span
-      >
-      <span
-        class="absolute bottom-10 right-[22%] -rotate-6 text-xl text-accent/15"
-        >♫</span
-      >
-      <span class="absolute left-[4%] top-16 -rotate-12 text-2xl text-accent/15"
-        >♩</span
-      >
-    </div>
     <div class="flex flex-col items-center gap-8 sm:flex-row sm:gap-12">
       <div
         class="shrink-0 rounded-full bg-gradient-to-br from-glow-a to-glow-b p-1 shadow-lg shadow-accent/10"
@@ -66,7 +81,7 @@ const subPages = [
         />
       </div>
       <div class="text-center sm:text-left">
-        <p class="font-display text-sm font-bold tracking-widest text-accent">
+        <p class="font-display text-sm font-bold tracking-widest text-accent-strong">
           RS256
         </p>
         <h1
@@ -173,7 +188,7 @@ const subPages = [
         href={channel.url}
         target="_blank"
         rel="noopener noreferrer"
-        class="group inline-flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-2.5 text-sm font-bold text-ink shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:text-accent hover:shadow-md hover:shadow-accent/10"
+        class="group inline-flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-2.5 text-sm font-bold text-ink shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:text-accent-strong hover:shadow-md hover:shadow-accent/10"
       >
         <Icon name="simple-icons:youtube" class="size-4 text-accent" />
         チャンネルを見る
@@ -198,7 +213,7 @@ const subPages = [
               <Icon name={page.icon} class="size-5" />
             </div>
             <div>
-              <h3 class="flex items-center gap-1.5 font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent group-hover:decoration-accent/50">
+              <h3 class="flex items-center gap-1.5 font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent-strong group-hover:decoration-accent/50">
                 {page.title}
                 <Icon
                   name="lucide:chevron-right"

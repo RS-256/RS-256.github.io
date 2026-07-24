@@ -1,43 +1,44 @@
 ---
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
-import { categories, type Work } from "../data/works";
+import { Icon } from "astro-icon/components"
+import { categories, type Work } from "../data/works"
+import { Image } from "astro:assets"
 
 /**
  * Detail dialog for a work. Opened by any element with
  * data-dialog-target={dialogId} (see the shared handler in BaseLayout).
  */
 interface Props {
-  work: Work;
-  dialogId: string;
+  work: Work
+  dialogId: string
 }
-const { work, dialogId } = Astro.props;
-const categoryLabel = categories.find((c) => c.id === work.category)?.label;
+const { work, dialogId } = Astro.props
+const categoryLabel = categories.find( ( c ) => c.id === work.category )?.label
 
 const chips = [
   work.links.site && {
     href: work.links.site,
     icon: "lucide:external-link",
     label: "Open Site",
-    primary: true,
+    primary: true
   },
   work.links.download && {
     href: work.links.download,
     icon: "lucide:download",
     label: "Download",
-    primary: true,
+    primary: true
   },
   work.links.source && {
     href: work.links.source,
     icon: "simple-icons:github",
     label: "View Source",
-    primary: false,
-  },
-].filter((c) => !!c);
+    primary: false
+  }
+].filter( ( c ) => !! c )
 ---
 
 <dialog
   id={dialogId}
+  style={`--cat-field: var(--cat-${work.category}-field); --cat-ink: var(--cat-${work.category}-ink);`}
   class="m-auto w-[calc(100%-2rem)] max-w-lg rounded-3xl border border-line bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/50 backdrop:backdrop-blur-sm"
 >
   <div class="p-6 sm:p-8">
@@ -55,7 +56,7 @@ const chips = [
             ]}
           />
         ) : (
-          <div class="flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-glow-a to-glow-b font-display text-2xl font-bold text-accent-strong">
+          <div class="flex size-16 items-center justify-center rounded-2xl bg-(--cat-field) font-display text-2xl font-bold text-(--cat-ink)">
             {work.title.charAt(0)}
           </div>
         )
@@ -64,7 +65,7 @@ const chips = [
         <h3 class="font-display text-xl font-bold">{work.title}</h3>
         {
           categoryLabel && (
-            <span class="mt-1.5 inline-block rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-medium text-accent-strong">
+            <span class="mt-1.5 inline-block rounded-full bg-(--cat-field) px-2.5 py-0.5 text-xs font-medium text-(--cat-ink)">
               {categoryLabel}
             </span>
           )
@@ -95,7 +96,7 @@ const chips = [
               "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:shadow-accent/15",
               chip.primary
                 ? "bg-accent-soft text-accent-strong"
-                : "border border-line text-ink hover:border-accent/40 hover:text-accent",
+                : "border border-line text-ink hover:border-accent/40 hover:text-accent-strong",
             ]}
           >
             <Icon name={chip.icon} class="size-4" />

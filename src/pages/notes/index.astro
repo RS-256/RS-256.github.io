@@ -1,11 +1,9 @@
 ---
-import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import NoteCard from "../../components/NoteCard.astro";
+import { getCollection } from "astro:content"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import NoteCard from "../../components/NoteCard.astro"
 
-const notes = (await getCollection("notes")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-);
+const notes = ( await getCollection( "notes" ) ).sort( ( a, b ) => b.data.date.valueOf() - a.data.date.valueOf() )
 ---
 
 <BaseLayout title="Notes" description="開発メモや技術記事など。">

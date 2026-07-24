@@ -1,15 +1,15 @@
 /** Social and external profile links */
 
 export interface SocialLink {
-  platform: string;
-  username: string;
-  url: string;
+  platform: string
+  username: string
+  url: string
   /** astro-icon icon name from the simple-icons collection */
-  icon: string;
+  icon: string
   /** Brand color on hover in the light theme */
-  color: string;
+  color: string
   /** Brand color on hover in the dark theme; use lighter colors for black brands */
-  darkColor?: string;
+  darkColor?: string
 }
 
 export const socialLinks: SocialLink[] = [
@@ -19,7 +19,7 @@ export const socialLinks: SocialLink[] = [
     url: "https://github.com/RS-256",
     icon: "simple-icons:github",
     color: "#181717",
-    darkColor: "#f0f6fc",
+    darkColor: "#f0f6fc"
   },
   {
     platform: "Modrinth",
@@ -27,7 +27,7 @@ export const socialLinks: SocialLink[] = [
     url: "https://modrinth.com/user/rs256",
     icon: "simple-icons:modrinth",
     color: "#00af5c",
-    darkColor: "#1bd96a",
+    darkColor: "#1bd96a"
   },
   {
     platform: "YouTube",
@@ -35,7 +35,7 @@ export const socialLinks: SocialLink[] = [
     url: "https://www.youtube.com/@RS65536",
     icon: "simple-icons:youtube",
     color: "#ff0000",
-    darkColor: "#ff4d4d",
+    darkColor: "#ff4d4d"
   },
   {
     platform: "Discord",
@@ -43,7 +43,7 @@ export const socialLinks: SocialLink[] = [
     url: "https://discord.gg/SjcMgG4GZS",
     icon: "simple-icons:discord",
     color: "#5865f2",
-    darkColor: "#7289da",
+    darkColor: "#7289da"
   },
   {
     platform: "X (Twitter)",
@@ -51,6 +51,6 @@ export const socialLinks: SocialLink[] = [
     url: "https://x.com/RS131072",
     icon: "simple-icons:x",
     color: "#000000",
-    darkColor: "#ffffff",
-  },
-];
+    darkColor: "#ffffff"
+  }
+]

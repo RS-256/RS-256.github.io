@@ -1,24 +1,38 @@
 ---
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
-import { categories, type Work } from "../data/works";
-import WorkDialog from "./WorkDialog.astro";
+import { Image } from "astro:assets"
+import { Icon } from "astro-icon/components"
+import { categories, type Work } from "../data/works"
+import WorkDialog from "./WorkDialog.astro"
 
 interface Props {
-  work: Work;
+  work: Work
   /** Hide under category headings, such as on the /works page. */
-  showCategory?: boolean;
+  showCategory?: boolean
 }
-const { work, showCategory = true } = Astro.props;
-const categoryLabel = categories.find((c) => c.id === work.category)?.label;
-const dialogId = `work-dialog-${work.id}`;
+const { work, showCategory = true } = Astro.props
+const categoryLabel = categories.find( ( c ) => c.id === work.category )?.label
+const dialogId = `work-dialog-${ work.id }`
 ---
 
 <button
   type="button"
   data-dialog-target={dialogId}
-  class="group flex w-full cursor-pointer gap-4 rounded-2xl border border-line bg-surface p-5 text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10"
+  style={`--cat-field: var(--cat-${work.category}-field); --cat-ink: var(--cat-${work.category}-ink);`}
+  class:list={[
+    "group relative flex w-full cursor-pointer gap-4 overflow-hidden rounded-2xl border border-line bg-surface p-5 text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-(--cat-ink)/40 hover:shadow-lg hover:shadow-(color:--cat-ink)/10",
+    // Sharp bottom-left corner so the category triangle fits snugly.
+    !showCategory && "rounded-bl-none",
+  ]}
 >
+  {
+    // Corner triangle stands in for the category badge under /works headings.
+    !showCategory && (
+      <span
+        class="pointer-events-none absolute bottom-0 left-0 size-4 bg-(--cat-ink) [clip-path:polygon(0_0,0_100%,100%_100%)]"
+        aria-hidden="true"
+      />
+    )
+  }
   <div class="shrink-0">
     {
       work.icon ? (
@@ -33,7 +47,7 @@ const dialogId = `work-dialog-${work.id}`;
           ]}
         />
       ) : (
-        <div class="flex size-14 items-center justify-center rounded-xl bg-gradient-to-br from-glow-a to-glow-b font-display text-xl font-bold text-accent-strong">
+        <div class="flex size-14 items-center justify-center rounded-xl bg-(--cat-field) font-display text-xl font-bold text-(--cat-ink)">
           {work.title.charAt(0)}
         </div>
       )
@@ -42,7 +56,7 @@ const dialogId = `work-dialog-${work.id}`;
   <div class="min-w-0">
     <div class="flex items-center gap-1.5">
       <h3
-        class="truncate font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent group-hover:decoration-accent/50"
+        class="truncate font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-(--cat-ink) group-hover:decoration-(--cat-ink)/50"
       >
         {work.title}
       </h3>
@@ -56,7 +70,7 @@ const dialogId = `work-dialog-${work.id}`;
     </p>
     {
       showCategory && categoryLabel && (
-        <span class="mt-2.5 inline-block rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-medium text-accent-strong">
+        <span class="mt-2.5 inline-block rounded-full bg-(--cat-field) px-2.5 py-0.5 text-xs font-medium text-(--cat-ink)">
           {categoryLabel}
         </span>
       )

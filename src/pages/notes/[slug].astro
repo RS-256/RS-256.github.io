@@ -1,31 +1,31 @@
 ---
-import { getCollection, render } from "astro:content";
-import { Icon } from "astro-icon/components";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import "katex/dist/katex.min.css";
+import { getCollection, render } from "astro:content"
+import { Icon } from "astro-icon/components"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import "katex/dist/katex.min.css"
 
 export async function getStaticPaths() {
-  const notes = await getCollection("notes");
-  return notes.map((note) => ({
+  const notes = await getCollection( "notes" )
+  return notes.map( ( note ) => ( {
     params: { slug: note.id },
-    props: { note },
-  }));
+    props: { note }
+  } ) )
 }
 
-const { note } = Astro.props;
-const { Content } = await render(note);
-const date = note.data.date.toLocaleDateString("ja-JP", {
+const { note } = Astro.props
+const { Content } = await render( note )
+const date = note.data.date.toLocaleDateString( "ja-JP", {
   year: "numeric",
   month: "long",
-  day: "numeric",
-});
+  day: "numeric"
+} )
 ---
 
 <BaseLayout title={note.data.title} description={note.data.description}>
   <article class="mx-auto max-w-3xl pt-14 sm:pt-20">
     <a
       href="/notes"
-      class="group inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-accent"
+      class="group inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-accent-strong"
     >
       <Icon
         name="lucide:chevron-left"

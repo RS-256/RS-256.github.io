@@ -4,14 +4,14 @@
  * Add or edit links by changing only resources.yaml.
  */
 
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content"
 
-export type ResourceGroup = CollectionEntry<"resources">["data"];
-export type ResourceItem = ResourceGroup["items"][number];
-export type ResourceLink = ResourceItem["links"][number];
+export type ResourceGroup = CollectionEntry< "resources" >[ "data" ]
+export type ResourceItem = ResourceGroup[ "items" ][ number ]
+export type ResourceLink = ResourceItem[ "links" ][ number ]
 
 /** All groups in the order defined by resources.yaml. */
-export async function getResourceGroups(): Promise<ResourceGroup[]> {
-  const entries = await getCollection("resources");
-  return entries.map((entry) => entry.data);
+export async function getResourceGroups(): Promise< ResourceGroup[] > {
+  const entries = await getCollection( "resources" )
+  return entries.map( ( entry ) => entry.data )
 }

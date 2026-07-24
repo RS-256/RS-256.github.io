@@ -1,40 +1,10 @@
 @import "tailwindcss";
+/* Shared design tokens (:root / .dark), also consumed by the tool sites. */
+@import "./tokens.css";
 @plugin "@tailwindcss/typography";
 
 /* Toggle dark mode with the .dark class (supports OS preference and manual toggle). */
 @custom-variant dark (&:where(.dark, .dark *));
-
-:root {
-  /* Light theme: pastel pink base */
-  --c-base: #fdf9fb;
-  --c-surface: #ffffff;
-  --c-surface-hover: #fff5f9;
-  --c-ink: #2e2329;
-  --c-muted: #74636e;
-  --c-line: #f1dde8;
-  --c-dot: rgba(214, 72, 143, 0.08);
-  --c-accent: #d6488f;
-  --c-accent-strong: #c02e78;
-  --c-accent-soft: #fce0ed;
-  --c-glow-a: #ffd6e8;
-  --c-glow-b: #e3d9ff;
-}
-
-.dark {
-  /* Dark theme: deep plum with pink accents */
-  --c-base: #17111a;
-  --c-surface: #211a26;
-  --c-surface-hover: #2a2130;
-  --c-ink: #f5edf3;
-  --c-muted: #b2a1ae;
-  --c-line: #382c3c;
-  --c-dot: rgba(244, 144, 191, 0.07);
-  --c-accent: #f490bf;
-  --c-accent-strong: #f7abd0;
-  --c-accent-soft: #3c2537;
-  --c-glow-a: #4a2a44;
-  --c-glow-b: #33294f;
-}
 
 @theme inline {
   --color-base: var(--c-base);
@@ -67,6 +37,30 @@ body {
   transition: background-color 200ms ease, color 200ms ease;
 }
 
+/* Visible keyboard focus ring on all interactive elements. */
+:focus-visible {
+  outline: 2px solid var(--c-accent-strong);
+  outline-offset: 2px;
+}
+
+/* Respect reduced-motion: disable hover lift/slide/zoom and dialog animations. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  dialog[open],
+  dialog[open]::backdrop {
+    animation: none;
+  }
+  /* All transforms inside interactive elements are hover-driven decorations. */
+  a,
+  a *,
+  button,
+  button * {
+    transform: none !important;
+  }
+}
+
 /* Open animation for work/resource dialogs */
 dialog[open] {
   animation: dialog-pop 180ms ease-out;
@@ -90,7 +84,7 @@ dialog[open]::backdrop {
 .prose {
   --tw-prose-body: var(--c-ink);
   --tw-prose-headings: var(--c-ink);
-  --tw-prose-links: var(--c-accent);
+  --tw-prose-links: var(--c-accent-strong);
   --tw-prose-bold: var(--c-ink);
   --tw-prose-quotes: var(--c-muted);
   --tw-prose-quote-borders: var(--c-accent-soft);

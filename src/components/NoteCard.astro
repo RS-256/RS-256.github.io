@@ -1,16 +1,16 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content"
+import { Icon } from "astro-icon/components"
 
 interface Props {
-  note: CollectionEntry<"notes">;
+  note: CollectionEntry< "notes" >
 }
-const { note } = Astro.props;
-const date = note.data.date.toLocaleDateString("ja-JP", {
+const { note } = Astro.props
+const date = note.data.date.toLocaleDateString( "ja-JP", {
   year: "numeric",
   month: "long",
-  day: "numeric",
-});
+  day: "numeric"
+} )
 ---
 
 <a
@@ -22,7 +22,7 @@ const date = note.data.date.toLocaleDateString("ja-JP", {
       {date}
     </time>
     <h3
-      class="mt-1 truncate font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent group-hover:decoration-accent/50"
+      class="mt-1 truncate font-display text-base font-bold text-ink underline decoration-transparent decoration-2 underline-offset-4 transition-all group-hover:text-accent-strong group-hover:decoration-accent/50"
     >
       {note.data.title}
     </h3>
