@@ -1,0 +1,57 @@
+name: Dependabot auto-merge
+
+# すべての PR でビルドを走らせ、Dependabot が作成した PR は
+# ビルドが通ったら自動でマージする。
+# build は全 PR で動き、auto-merge は build 成功時（needs）かつ
+# Dependabot の PR のときだけ動く。
+# ただしメジャーバージョン更新は自動マージせず、人力レビュー／マージに回す。
+on:
+  pull_request:
+
+# 既定は権限なし。各ジョブで必要な分だけ付与する。
+permissions: {}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build with Astro
+        run: npm run build
+
+  auto-merge:
+    name: Auto-merge
+    needs: build
+    runs-on: ubuntu-latest
+    # Dependabot が作成した PR のみを対象にする。
+    if: github.actor == 'dependabot[bot]'
+    # マージのために書き込み権限が必要。
+    # Dependabot 起点の実行では GITHUB_TOKEN は既定で read-only のため、ここで明示的に付与する。
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Fetch Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      # メジャー更新以外（minor / patch）のときだけ自動マージする。
+      # メジャー更新はここでスキップされ、PR は開いたまま人力マージに回る。
+      - name: Enable auto-merge for Dependabot PR
+        if: steps.metadata.outputs.update-type != 'version-update:semver-major'
+        run: gh pr merge --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
