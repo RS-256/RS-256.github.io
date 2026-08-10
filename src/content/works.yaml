@@ -83,6 +83,15 @@
     site: https://rs256.net/dustNotifierOrderCalc/
   category: web-tools
 
+- id: actions
+  title: actions
+  description: GitHub Actions のワークフローと Dependabot 設定を GUI で生成する Web ツール。YAML を手書きせずに設定できる。
+  details: GitHub Actions のワークフローと Dependabot 設定を、YAML を書かずに GUI で組み立てられる Web ツール。CI(lint / test / build)、デプロイ、Dependabot の 3 種類のファイルを生成でき、Dependabot は 17 のエコシステムと依存関係のグルーピング・スケジュール設定に対応。処理はすべてブラウザ内で完結し、外部 API への通信は行いません。
+  links:
+    source: https://github.com/RS-256/actions
+    site: https://rs256.net/actions/
+  category: web-tools
+
 - id: midi-to-litematic-converter
   title: midi-to-litematic-converter
   description: MIDI ファイルから音ブロックの配置を自動生成し、.litematic 形式で書き出すブラウザアプリ。ピアノロールでのプレビューに対応。
