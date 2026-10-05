@@ -16,19 +16,19 @@
     "@astrojs/markdown-remark": "^7.3.1",
     "@fontsource-variable/m-plus-2": "^5.3.0",
     "@fontsource/m-plus-rounded-1c": "^5.3.0",
-    "@iconify-json/lucide": "^1.2.136",
-    "@iconify-json/simple-icons": "^1.2.97",
+    "@iconify-json/lucide": "^1.2.138",
+    "@iconify-json/simple-icons": "^1.2.98",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.5",
     "astro-icon": "^1.2.0",
-    "katex": "^0.18.9",
+    "katex": "^0.19.0",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
     "tailwindcss": "^4.1.11",
     "yaml": "^2.9.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.14"
+    "@biomejs/biome": "^2.5.15"
   }
 }
