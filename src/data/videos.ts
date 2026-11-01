@@ -17,12 +17,12 @@ export interface Video {
 
 export const featuredVideos: Video[] = [
   {
-    id: "yC8zk51nfH0",
-    title: "「ノクティルーカ」をminecraftで作ってみた #音ブロボカロ祭り3"
+    id: "_9zNdoFvmqU",
+    title: "「水槽のブランコ (義妹生活 ED)」をminecraftで作ってみた #MNC2026"
   },
   {
-    id: "1UajZC-nfco",
-    title: "「アスノヨゾラ哨戒班」をminecraftで作ってみた"
+    id: "yC8zk51nfH0",
+    title: "「ノクティルーカ」をminecraftで作ってみた #音ブロボカロ祭り3"
   },
   {
     id: "_mi5Kmr2HDM",
